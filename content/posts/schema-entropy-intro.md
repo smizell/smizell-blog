@@ -78,7 +78,7 @@ The simplest schema has one variation. It can have many properties, but if they 
 
 A high schema entropy doesn't guarantee problems will occur, nor does it tell you exactly what problems could occur. It mainly calls out areas of complexity, and points to schemas that require more care when consuming.
 
-To protect themselves, an API consumer could work eliminate possible errors by handling every possible variation. Unfortunately, this isn't possible for schemas with more than a few properties based on the schema alone.
+To protect themselves, an API consumer could work to eliminate possible errors by handling every possible variation. Unfortunately, this isn't possible for schemas with more than a few properties based on the schema alone.
 
 Another option is to reduce the number of variations that one has to deal with. If a schema has eight different variations, the API consumer can figure out ways to handle one or two of them depending on the combination of properties needed.
 
