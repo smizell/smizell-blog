@@ -4,6 +4,7 @@ date: "2021-05-31T07:00:32-05:00"
 author: "Stephen Mizell"
 authorTwitter: "Stephen_Mizell"
 showFullContent: false
+tags: [writing]
 ---
 
 One of my favorite practices I've adopted in my professional career is to write about everything I'm working on or thinking about in a place coworkers could see. I thought I'd share the ways I've made this work for me.
