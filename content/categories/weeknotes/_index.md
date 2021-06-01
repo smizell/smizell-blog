@@ -1,7 +1,6 @@
 ---
 title: "Weeknotes"
 date: 2021-05-29T10:34:26-05:00
-draft: true
 ---
 
 # Weeknotes
