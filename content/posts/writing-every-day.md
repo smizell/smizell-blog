@@ -10,7 +10,7 @@ showFullContent: false
 
 I remember hearing Seth Godin say on a podcast that he thinks everyone should start a blog and write on it every day. In 2017 he wrote his [7,000th post](https://seths.blog/2017/11/this-is-post-7000/), which he said added up to 37 full-length books. When asked for advice on becoming a better designer, he said to write every day.
 
-Last year I got on a kick of reading Annie Dillard. I enjoyed her style. She would take her observations and weaves them throughout her essays. This is a section I grabbed [Total Eclipse](https://www.theatlantic.com/science/archive/2017/08/annie-dillards-total-eclipse/536148/) that shows her using a tiny detail of her day to make a deeper point.
+Last year I got on a kick of reading Annie Dillard. I enjoyed her style. She would take her observations and weave them in throughout her essays. This is a section I grabbed [Total Eclipse](https://www.theatlantic.com/science/archive/2017/08/annie-dillards-total-eclipse/536148/) that shows her using a tiny detail of her day to make a deeper point.
 
 > I lay in bed and looked at the painting on the hotel room wall. It was a print of a detailed and lifelike painting of a smiling clown’s head, made out of vegetables. It was a painting of the sort which you do not intend to look at, and which, alas, you never forget. Some tasteless fate presses it upon you; it becomes part of the complex interior junk you carry with you wherever you go.
 
