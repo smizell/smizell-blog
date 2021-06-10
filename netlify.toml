@@ -4,5 +4,5 @@
 [[redirects]]
   from = "/feed"
   to = "/index.xml"
-  status = 301
+  status = 200
   force = false
