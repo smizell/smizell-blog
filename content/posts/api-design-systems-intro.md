@@ -19,7 +19,7 @@ The problem was, we had locked all those styles, standards, and requirements awa
 
 When we'd write these style guides, we'd come up with a list of standards that we'd either require people to follow or allow them to follow if they chose. And sometimes we'd make it more granular than that—we'd require part of a standard and allow for the other parts. Not only could you not pick any standard, but you might not be able to use the entirety of a standard.
 
-If we didn't find standards that met our needs or matched current practices, we'd come up with our own and define them in the style guide. Sometimes they'd be more thought out. Other times they'd be underspecified at best.
+To add to the complexity, if we didn't find standards that met our needs or matched current practices, we'd come up with our own and define them in the style guide. Sometimes they'd be more thought out. Other times they'd be underspecified at best.
 
 This left us with a bunch of files with MUSTs and SHOULDs scattered around referencing all or part of existing standards while including custom standards that were often lacking. There's opportunity there for improvement.
 
