@@ -1,6 +1,7 @@
 +++
 title = "OK Fine"
 date = "2021-05-28T07:43:18-05:00"
+categories = ["meta"]
 description = ""
 showFullContent = false
 +++
