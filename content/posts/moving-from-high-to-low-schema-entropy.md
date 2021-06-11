@@ -5,7 +5,6 @@ cover: ""
 tags: [schema-entropy]
 description: ""
 showFullContent: false
-draft: true
 ---
 
 Entropy is concerned with the amount of thermal energy that is available for work. The higher the entropy, the less the available energy for work. And vice versa.
