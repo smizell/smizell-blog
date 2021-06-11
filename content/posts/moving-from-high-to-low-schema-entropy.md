@@ -9,7 +9,7 @@ showFullContent: false
 
 Entropy is concerned with the amount of thermal energy that is available for work. The higher the entropy, the less the available energy for work. And vice versa.
 
-The second law of thermodynamics states entropy will increase over time in a closed system until it reaches equilibrium. All the available energy will level out eventually as entropy increases.
+The [second law of thermodynamics](https://en.wikipedia.org/wiki/Second_law_of_thermodynamics) states entropy will increase over time in a closed system until it reaches equilibrium. All the available energy will level out eventually as entropy increases.
 
 I recently wrote about the idea of [understanding the complexity of a schema by measuring its entropy](https://smizell.com/posts/2021/05/understanding-api-complexity-through-schema-entropy/). One way to look at a schema's entropy is to calculate the number of possible variations of a schema. The more variations, the higher the entropy. The higher the entropy, the more difficult it is to work with an API.
 
