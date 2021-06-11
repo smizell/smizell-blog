@@ -1,24 +1,30 @@
 EDITOR_CMD = "open -a \"/Applications/iA Writer.app\""
 
+task :default => [:publish]
+
+desc "Commit files in the content directory"
 task :commit_content do
   `git checkout main`
   `git add content/`
   `git commit -m "Add content #{Time.now}"`
 end
 
+desc "Publish site"
 task publish: :commit_content do
   `git push origin main`
 end
 
 namespace :posts do
-  task :new, [:file_name] do |t, args|
-    post = Posts.from_slug(args[:file_name])
+  desc "Create a new post and open editor"
+  task :new, [:slug] do |t, args|
+    post = Posts.from_slug(args[:slug])
     post.create!
     post.edit
   end
 end
 
 namespace :weeknotes do
+  desc "Create a new weeknote and open editor"
   task :new do
     edit_file Weeknotes.new.create_next!
   end
