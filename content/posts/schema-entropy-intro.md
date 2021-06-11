@@ -2,6 +2,7 @@
 title = "Understanding API Complexity Through Schema Entropy"
 date = "2021-05-21T13:34:36-05:00"
 description = ""
+tags = ["schema-entropy"]
 showFullContent = false
 +++
 
