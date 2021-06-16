@@ -35,6 +35,8 @@ I'm not in improv, so I can't speak from experience, but one of the key rules to
 
 For instance, if someone starts a story with, "I'm sorry to bother, but is this your phone?" you don't respond, "No." That stops the story—where can the other person go from there? Instead, you build on their story to make something collaborative and new.
 
+The story moves forward by taking what was there and adding more to it. Each person adds their own twist and flavor, making a mixture of story that couldn't exist if done by a single person.
+
 ## The way we make progress
 
 The best new standards are the ones that take the existing standards and add a fresh perspective, a perspective born from real-life insights into the successes and failures of an existing standard.
