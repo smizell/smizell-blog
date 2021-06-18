@@ -1,11 +1,10 @@
 ---
-title: "Arguing about the Shape of Water"
-date: "2021-06-17T20:22:15-05:00"
-cover: ""
+title: Arguing about the Shape of Water
+date: '2021-06-18T10:41:15-05:00'
+cover: ''
 tags: []
-description: ""
+description: ''
 showFullContent: false
-draft: true
 ---
 
 When we want to discuss an abstract concept in software, we reach for a metaphor.
