@@ -1,6 +1,8 @@
+require "yaml"
+
 EDITOR_CMD = "open -a \"/Applications/iA Writer.app\""
 
-task :default => [:publish]
+task :default => [:commit_content]
 
 desc "Commit files in the content directory"
 task :commit_content do
@@ -9,8 +11,8 @@ task :commit_content do
   `git commit -m "Add content #{Time.now}"`
 end
 
-desc "Publish site"
-task publish: :commit_content do
+desc "Deploy site"
+task deploy: :commit_content do
   `git push origin main`
 end
 
@@ -29,6 +31,28 @@ namespace :weeknotes do
     weeknote = Content.new_weeknote
     weeknote.create!
     weeknote.edit
+  end
+end
+
+namespace :schedule do
+  desc "Publish the top post in the schedule"
+  task :publish do
+    schedule = File.readlines "schedule.txt"
+    top = schedule.shift.strip
+    file_name = File.join("content", top)
+    text = File.read file_name
+    _, frontmatter_yaml, body = text.split("---").map(&:strip)
+    frontmatter = YAML.load frontmatter_yaml
+    frontmatter.delete "draft" if frontmatter.key? "draft"
+    frontmatter["date"] = Time.now.strftime('%FT%T%:z')
+    new_text = <<~TXT
+      #{YAML.dump(frontmatter).strip}
+      ---
+
+      #{body}
+    TXT
+    File.write file_name, new_text
+    File.write "schedule.txt", schedule.join("\n")
   end
 end
 
