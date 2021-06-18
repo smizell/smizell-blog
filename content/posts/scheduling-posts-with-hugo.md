@@ -26,7 +26,7 @@ This does a few things.
 * Pushes the filename to a `schedule.txt` file
 * Opens the new file with iA Writer
 
-The archetype file sets `draft` is to `true`. The date is set to today, but I don't care about the date at this point. I'll change that when I publish.
+The archetype file sets `draft` to `true`. The date is set to today, but I don't care about that at this point. I'll change that when I publish it.
 
 I have another task called `schedule:publish`. This will do:
 
