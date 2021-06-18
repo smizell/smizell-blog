@@ -37,4 +37,6 @@ I have another task called `schedule:publish`. This will do:
 
 At that point I can run `rake deploy`, which commits everything in the content folder and the schedule file and pushes it to GitHub.
 
+You can see the [code on GitHub](https://github.com/smizell/smizell-blog/blob/b4503882180b905ed4813c990f1cf32efc15c78a/Rakefile#L38-L73).
+
 Once I get some content scheduled, I'll write a GitHub Action to automatically publish on a recurring basis. I also want to tinker with a draft process that doesn't automatically schedule a post.
