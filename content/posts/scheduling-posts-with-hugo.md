@@ -3,7 +3,7 @@ title: Scheduling Posts With Hugo
 date: '2021-06-18T11:05:36-05:00'
 cover: ''
 tags:
-- meta
+categories: [meta]
 description: ''
 showFullContent: false
 ---
