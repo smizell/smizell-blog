@@ -1,6 +1,7 @@
 require "yaml"
 
 EDITOR_CMD = "open -a \"/Applications/iA Writer.app\""
+SCHEDULE_FILE = "schedule.txt"
 
 task :default => [:commit_content]
 
@@ -37,8 +38,13 @@ end
 namespace :schedule do
   desc "Publish the top post in the schedule"
   task :publish do
-    schedule = File.readlines "schedule.txt"
-    top = schedule.shift.strip
+    schedule = File.readlines SCHEDULE_FILE
+    top = schedule.shift
+    if top.nil?
+      puts "Nothing scheduled"
+      next
+    end
+    top.strip!
     file_name = File.join("content", top)
     text = File.read file_name
     _, frontmatter_yaml, body = text.split("---").map(&:strip)
@@ -52,13 +58,25 @@ namespace :schedule do
       #{body}
     TXT
     File.write file_name, new_text
-    File.write "schedule.txt", schedule.join("\n")
+    File.write SCHEDULE_FILE, schedule.join("\n")
+  end
+
+  desc "Schedule a new post"
+  task :new, [:slug] do |t, args|
+    post = Content.new_post(args[:slug])
+    post.create!
+    schedule = File.readlines SCHEDULE_FILE
+    schedule.unshift post.file_path
+    File.write SCHEDULE_FILE, schedule.join("\n").concat("\n")
+    post.edit
   end
 end
 
 # ---------
 
 class Content
+  attr_reader :file_path
+
   def initialize(file_path, kind = "posts")
     @file_path = file_path
     @kind = kind
