@@ -8,7 +8,7 @@ task :default => [:commit_content]
 desc "Commit files in the content directory"
 task :commit_content do
   `git checkout main`
-  `git add content/`
+  `git add content/ schedule.txt`
   `git commit -m "Add content #{Time.now}"`
 end
 
@@ -66,7 +66,7 @@ namespace :schedule do
     post = Content.new_post(args[:slug])
     post.create!
     schedule = File.readlines SCHEDULE_FILE
-    schedule.unshift post.file_path
+    schedule.push post.file_path
     File.write SCHEDULE_FILE, schedule.join("\n").concat("\n")
     post.edit
   end
