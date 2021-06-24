@@ -11,7 +11,7 @@ I came across a link to unique website called [Special Fish](https://special.fis
 
 > Special Fish is a directory of profiles. Each profile is composed of a text-based log, lists, and links.
 
-It's a simple site, but it has an interesting community around it. I got lost in the fun of reading the profiles on there, lots of them linking to other weird, cool, interesting places. There's a random button on the site to help you explore the profiles.
+It's a simple site, but it has an interesting community around it. There are all these interesting profiles, lots of them linking to other weird, cool, interesting places. There's a random button on the site to help you explore and find new things to read.
 
 There are more interesting links at the bottom of the Special Fish page that lead down rabbit holes of their own. The creator of Special Fish links to [their site](https://elliott.computer/) which is full of interesting links and projects they've worked on, one of which is [Gossip's Web](https://gossipsweb.net/). It's a directory of handmade webpages. The site [mentions](https://gossipsweb.net/submit) what counts as handmade.
 
