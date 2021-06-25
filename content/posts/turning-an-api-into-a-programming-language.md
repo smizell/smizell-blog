@@ -9,15 +9,15 @@ showFullContent: false
 
 What if we could combine the power of HTTP with the universal qualities of URLS to create a way to build an API that works like code? It would be a way to turn the web into a programming language of sorts, to treat an API as if it were code.
 
-To explain this weird idea, we'll think about it in terms of calling functions similar to how you'd call functions in code.
+To explain this weird idea, we'll think about it in terms of calling functions with HTTP calls similar to how you'd call functions in code.
 
-We'll define a function as a URL that handles a POST request that contains arguments, does something, then returns a response with the value.
+To keep it simple, we'll define a function as a URL that handles a POST request that contains arguments in the body. It does something with the arguments then returns a response with a value.
 
 ## Functions that take arguments
 
 We'll look at a few examples to see how this might work. All this [code is on Glitch](https://glitch.com/edit/#!/api-as-code) if you'd like to tinker with it.
 
-We'll start by creating an `add` function. We'll send in an `arg` property with an array of two numbers. We make the call with HTTPie:
+We'll start by creating an `add` function. We'll send in an `args` property with an array of two numbers. We make the call with HTTPie:
 
 ```sh
 http post "https://api-as-code.glitch.me/add" args:="[1, 2]"
@@ -41,7 +41,7 @@ The API code will combine the query `args` which is `[1]` and body `args` which 
 
 ## Higher-order functions by passing around URLs
 
-Next we'll introduce another idea: higher-order functions. This lets us pass functions around as arguments to let us compose functions together to get new results.
+Next we'll introduce another idea: higher-order functions. This lets us pass functions around as arguments to compose functions together to get new results.
 
 For this example we'll look at a `map` function which takes a function as the first argument and a list of items to iterate over as the second.
 
@@ -72,7 +72,7 @@ At this point, we can start thinking about ways to write and compose any type of
 
 ## But... why?
 
-This is a fun Friday morning experiment. The downside to this all is that it could result in lots of API calls to execute all the code. Our `map` example above performed three requests in the backend to call the `add` function for each number. This would be slow in some situations.
+This is a fun Friday morning experiment. The downside to this all is that it could result in lots of API calls to execute all the code. Our `map` example above performed three requests in the backend to call the `add` function for each number. This would be very slow in some situations.
 
 But there's something interesting to me about it.
 
