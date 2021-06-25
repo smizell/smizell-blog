@@ -41,7 +41,7 @@ The API code will combine the query `args` which is `[1]` and body `args` which 
 
 ## Higher-order functions by passing around URLs
 
-Next we'll introduce another idea: higher-order functions. This lets us pass functions around as arguments to compose functions together to get new results.
+Next we'll introduce another idea: higher-order functions. This lets us pass functions around as arguments so we can compose functions together and create new results.
 
 For this example we'll look at a `map` function which takes a function as the first argument and a list of items to iterate over as the second.
 
