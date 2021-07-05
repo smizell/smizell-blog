@@ -24,6 +24,12 @@ namespace :posts do
     post.create!
     post.edit
   end
+
+  desc "Count posts"
+  task :count do
+    post_count = `find ./content/posts -type f -name "*.md" | wc -l`.strip
+    puts "You've written #{post_count} posts!"
+  end
 end
 
 namespace :weeknotes do
