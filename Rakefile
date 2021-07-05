@@ -17,6 +17,9 @@ task deploy: :commit_content do
   `git push origin main`
 end
 
+desc "Publish, same as deploy"
+task :push => :deploy
+
 namespace :posts do
   desc "Create a new post and open editor"
   task :new, [:slug] do |t, args|
