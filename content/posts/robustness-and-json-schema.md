@@ -79,3 +79,5 @@ It's important that API consumers follow a similar approach. They should only va
 To make this work, API providers have to create a separation between what's publicly expressed as the current schema and what's tolerated by the provider. Robustness doesn't require that everything be defined as optional, it just requires that API providers have some level of tolerance for API changes.
 
 We can express this idea by modifying Postel's Law: be conservative in how you publicly document your schemas and be liberal in how you apply those schemas.
+
+Tolerance in this case is the flip side to deprecation. They both express an in-between period where things are changing and in flux. Deprecation says that a property that's there won't be one day. Tolerance says a property that wasn't there before now is. Both describe change and both allow for things to continue as usual while API consumers catch up.
