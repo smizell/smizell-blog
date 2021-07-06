@@ -1,5 +1,5 @@
 ---
-title: "Robustness, Tolerant Readers, and JSON Schema"
+title: "Robustness, Tolerance, and JSON Schema"
 date: "2021-07-06T07:28:00-05:00"
 cover: ""
 tags: [schema-entropy]
