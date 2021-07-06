@@ -6,6 +6,8 @@ tags: []
 description: ""
 showFullContent: false
 draft: true
+resources:
+- https://juliareda.eu/2021/07/github-copilot-is-not-infringing-your-copyright/
 ---
 
 There's been a lot of chatter about GitHub's latest product [GitHub Copilot](https://copilot.github.com/). People are unhappy that GitHub trained their proprietary models with open source software (OSS) and is now using those models to generate unattributed code. GitHub claims the copyright owner of the generated code is the new author, but since the code is derived from OSS, people argue it should include the license of the original code.
