@@ -5,7 +5,6 @@ cover: '/images/summary-cover.jpg'
 tags: []
 description: ""
 showFullContent: false
-draft: true
 ---
 
 _This is an excerpt from the book, which is available for preorder now. [Grab a copy](https://smizell.gumroad.com/l/apibydesign) with discount code early-bird._
