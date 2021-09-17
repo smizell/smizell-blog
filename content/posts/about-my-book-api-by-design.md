@@ -4,7 +4,7 @@ date: "2021-09-17T09:17:14-05:00"
 cover: '/images/summary-cover.jpg'
 tags: [api-by-design]
 summary: |
-  A look at some of the reasons why I wrote the book API by Design
+  A look at some of the reasons why I wrote the book API by Design and how I fell into the topic by accident
 showFullContent: false
 ---
 
