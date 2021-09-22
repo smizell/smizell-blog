@@ -1,6 +1,6 @@
 baseurl = "https://smizell.com/"
 languageCode = "en-us"
-theme = "terminal"
+theme = "worry"
 paginate = 10
 
 [params]
@@ -44,7 +44,7 @@ paginate = 10
   # see https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started#card-and-content-attribution
   # do not include @
   creator = "Stephen_Mizell"
-  site = ""
+  site = "https://smizell.com"
 
 [languages]
   [languages.en]

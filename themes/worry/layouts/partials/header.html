@@ -1,0 +1,16 @@
+<header>
+  {{ if (.IsHome) }}
+    <div id="site-name">Stephen Mizell</div>
+  {{ else }}
+    <div id="site-name"><a href="/">Stephen Mizell</a></div>
+  {{ end }}
+</header>
+
+<nav>
+  <ul>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="/tags/">Tags</a></li>
+    <li><a href="/categories/">Categories</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  padding: 40px 0;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #111;
+}
+
+a {
+  color: #111;
+}
+
+hr {
+  margin-bottom: 30px;
+  height: 1px;
+  border: none;
+  background-color: #444;
+}
+
+header, nav, main, footer {
+  margin: 0 auto;
+  max-width: 660px;
+}
+
+header, nav, .content {
+  padding: 0 20px;
+}
+
+#site-name {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+}
+
+#site-name a {
+  text-decoration: none;
+}
+
+#site-name a:hover {
+  text-decoration: underline;
+}
+
+nav {
+  padding-bottom: 30px;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+nav ul li {
+  margin-left: 5px;
+  display: inline;
+}
+
+main ul {
+  list-style: square;
+  padding-left: 20px;
+}
+
+main ul > li {
+  padding-left: 5px;
+}
+
+main ul > li:not(:first-of-type) {
+  margin-top: 16px;
+}
+
+main h2, main h3 {
+  margin-bottom: 8px;
+}
+
+/* I like to reduce the space after headings */
+main h2 + *, main h3 + * {
+  margin-top: 0;
+}
+
+.post-title {
+  margin-bottom: 0;
+}
+
+.post-title a {
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.list .post:not(:last-of-type) {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.post-meta {
+  padding-bottom: 15px;
+}
+
+.post-date, .post-tags {
+  display: block;
+}
+
+.post-date {
+  color: #777;
+  font-style: italic;
+}
+
+.heading {
+  padding-bottom: 20px;
+  font-size: 30px;
+}
+
+.heading:before {
+  border-bottom: 2px solid #000;
+  content: '';
+  display: block;
+  width: 30px;
+}
+
+
+
+@media (min-width: 690px) {
+  header, nav, .content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
