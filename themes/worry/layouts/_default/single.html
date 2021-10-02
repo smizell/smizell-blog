@@ -39,5 +39,9 @@
   <div class="post-content">
     {{ .Content | safeHTML }}
   </div>
+
+  {{ if eq .Type $.Site.Params.contentTypeName }}
+    {{ partial "pagination-posts.html" . }}
+  {{ end }}
 </div>
 {{ end }}

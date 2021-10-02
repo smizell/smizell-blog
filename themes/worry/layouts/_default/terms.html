@@ -1,6 +1,6 @@
 {{ define "main" }}
   <div class="terms">
-    <h1>{{ .Title }}</h1>
+    <h1 class="heading">{{ .Title }}</h1>
     <ul>
       {{ $type := .Type }}
       {{ range $key, $value := .Data.Terms.Alphabetical }}

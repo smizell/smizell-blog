@@ -7,12 +7,14 @@
 
   <div class="book">
     <img class="book__cover" src="{{ "images/api-by-design-cover-small.svg" | absURL }}" alt="API by Design cover" width="100" />
-    <span class="book__heading">Upcoming book <em>API by Design</em></span>
-    <p>
-      I'm releasing a book on September 30, 2021 called <em>API by Design</em>,
-      a book about finding ways to measure complexity so we can design and build better APIs.
-    </p>
-    <p><a href="http://apibydesign.com">Buy now</a></p>
+    <div>
+      <span class="book__heading">Upcoming book <em>API by Design</em></span>
+      <p>
+        I'm releasing a book on September 30, 2021 called <em>API by Design</em>,
+        a book about finding ways to measure complexity so we can design and build better APIs.
+      </p>
+      <p><a href="http://apibydesign.com">Buy now</a></p>
+    </div>
   </div>
 
   <div class="content list">
@@ -69,6 +71,7 @@
         {{ end }}
       </div>
     {{ end }}
+    
     {{ partial "pagination.html" . }}
   </div>
 {{ end }}

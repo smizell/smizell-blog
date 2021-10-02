@@ -20,12 +20,17 @@ hr {
   background-color: #444;
 }
 
-header, nav, main, footer {
+header,
+nav,
+main,
+footer {
   margin: 0 auto;
   max-width: 660px;
 }
 
-header, nav, .content {
+header,
+nav,
+.content {
   padding: 0 20px;
 }
 
@@ -60,24 +65,38 @@ nav ul li {
 
 main ul {
   list-style: square;
+}
+
+main ul,
+main ol {
   padding-left: 20px;
 }
 
-main ul > li {
+main ul > li,
+main ol > li {
   padding-left: 5px;
 }
 
-main ul > li:not(:first-of-type) {
+main ul > li:not(:first-of-type),
+main ol > li:not(:first-of-type) {
   margin-top: 16px;
 }
 
-main h2, main h3 {
+.index-content h1,
+main h2,
+main h3 {
   margin-bottom: 8px;
 }
 
 /* I like to reduce the space after headings */
-main h2 + *, main h3 + * {
+.index-content h1 + *,
+main h2 + *,
+main h3 + * {
   margin-top: 0;
+}
+
+.content.single {
+  border-bottom: 1px solid #fff;
 }
 
 .post-title {
@@ -92,14 +111,13 @@ main h2 + *, main h3 + * {
   text-decoration: underline;
 }
 
-.list .post:not(:last-of-type) {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+.list .post:not(:first-of-type) {
+  margin-top: 35px;
+  border-top: 1px solid #eee;
 }
 
-.post-meta {
-  padding-bottom: 15px;
+.list .post-content {
+  padding-top: 15px;
 }
 
 .post-date, .post-tags {
@@ -111,19 +129,46 @@ main h2 + *, main h3 + * {
   font-style: italic;
 }
 
-.heading {
+.heading,
+.index-content h1 {
   padding-bottom: 5px;
   font-size: 30px;
 }
 
-.heading:before {
+.heading:before,
+.index-content h1:before {
   border-bottom: 2px solid #000;
   content: '';
   display: block;
-  width: 30px;
+  width: 40px;
 }
 
+.pagination {
+  margin-top: 50px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
 
+.pagination__links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.highlight pre {
+  padding: 15px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+code {
+  padding: 3px;
+  background-color: #eee;
+  border-radius: 2px;
+}
+
+pre code {
+  background-color: transparent;
+}
 
 @media (min-width: 690px) {
   header, nav, .content {

@@ -1,5 +1,5 @@
 <div class="pagination">
-  <div class="pagination__buttons">
+  <div class="pagination__links">
     {{ if .Paginator.HasPrev }}
       <span class="button previous">
         <a href="{{ .Paginator.Prev.URL }}">
@@ -7,8 +7,6 @@
           <span class="button__text">{{ $.Site.Params.newerPosts | default "Newer posts" }}</span></a>
       </span>
     {{ end }}
-
-    {{ if and .Paginator.HasPrev .Paginator.HasNext}} | {{ end }}
     {{ if .Paginator.HasNext }}
       <span class="button next">
         <a href="{{ .Paginator.Next.URL }}">

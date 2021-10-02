@@ -1,9 +1,7 @@
-.quiet {
-  color: #333;
-  font-size: 14px;
-}
-
 .book {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
   margin-bottom: 50px;
   padding: 15px;
   background-color: #eee;
@@ -12,7 +10,7 @@
 }
 
 .book a {
-  padding: 10px 20px;
+  padding: 10px;
   background-color: #111;
   color: #fff;
   text-decoration: none;
@@ -23,18 +21,7 @@
   margin: 5px 0 20px;
 }
 
-.book::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
 .book__heading {
   font-size: 18px;
   font-weight: bold;
-}
-
-.book__cover {
-  float: left;
-  padding: 0 15px 0 0;
 }

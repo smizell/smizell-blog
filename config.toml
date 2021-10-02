@@ -36,6 +36,10 @@ paginate = 10
   # it's set to `true` by default
   # oneHeadingSize = false
 
+[markup]
+  [markup.highlight]
+    style = 'manni'
+
 [permalinks]
   posts = "/posts/:year/:month/:title/"
 
