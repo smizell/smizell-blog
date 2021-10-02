@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
-  {{- partial "head.html" . -}}
+  <head>
+    {{ block "title" . }}
+      <title>{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }} / {{ $.Site.Title }}{{ end }}</title>
+    {{ end }}
+    {{- partial "head.html" . -}}
+  </head>
   <body>
     {{- partial "header.html" . -}}
     <main>

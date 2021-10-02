@@ -79,7 +79,7 @@ main ol > li {
 
 main ul > li:not(:first-of-type),
 main ol > li:not(:first-of-type) {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .index-content h1,
