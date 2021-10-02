@@ -8,11 +8,7 @@ summary: |
 showFullContent: false
 ---
 
-_This is an excerpt from the book, which is available for preorder now. [Grab a copy](https://smizell.gumroad.com/l/apibydesign) with discount code early-bird._
-
----
-
-I fell into the topic for my book [_API by Design_](https://smizell.gumroad.com/l/apibydesign) by accident. This is a behind-the-scenes look at how that happened and a deeper glimpse into the premise that API design should be more accessible to people who are just starting out.
+I fell into the topic for my book [_API by Design_](http://apibydesign.com) by accident. This is a behind-the-scenes look at how that happened and a deeper glimpse into the premise that API design should be more accessible to people who are just starting out.
 
 ## The challenges of API testing
 
