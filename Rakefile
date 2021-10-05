@@ -79,6 +79,13 @@ namespace :schedule do
     File.write SCHEDULE_FILE, schedule.join("\n").concat("\n")
     post.edit
   end
+
+  desc "Schedule an existing post"
+  task :existing, [:file_path] do |t, args|
+    schedule = File.readlines SCHEDULE_FILE
+    schedule.push args[:file_path]
+    File.write SCHEDULE_FILE, schedule.join("\n").concat("\n")
+  end
 end
 
 # ---------
