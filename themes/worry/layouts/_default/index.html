@@ -59,6 +59,8 @@
           {{ else }}
             {{ if .Truncated }}
               {{ .Summary }}
+            {{ else }}
+              {{ .Content }}
             {{ end }}
           {{ end }}
         </div>

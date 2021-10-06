@@ -20,12 +20,19 @@ hr {
   background-color: #444;
 }
 
+blockquote {
+  margin: 0;
+  padding-left: 15px;
+  border-left: 2px solid #ccc;
+  font-style: italic;
+}
+
 header,
 nav,
 main,
 footer {
   margin: 0 auto;
-  max-width: 660px;
+  max-width: 620px;
 }
 
 header,
