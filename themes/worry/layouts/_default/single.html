@@ -40,6 +40,20 @@
     {{ .Content | safeHTML }}
   </div>
 
+  {{ if in .Params.features "meta-api-by-design" }}
+    <div class="book book--meta">
+      <img class="book__cover" src="{{ "images/api-by-design-cover-small.svg" | absURL }}" alt="API by Design cover" width="100" />
+      <div>
+        <span class="book__heading">New book: <em>API by Design</em></span>
+        <p>
+          This is a meta blog post about some of the topics I cover in my book, <em>API by Design</em>.
+          Check out the book for more on this and other topics.
+        </p>
+        <p><a href="http://apibydesign.com">Buy now</a></p>
+      </div>
+    </div>
+  {{ end }}
+
   {{ if eq .Type $.Site.Params.contentTypeName }}
     {{ partial "pagination-posts.html" . }}
   {{ end }}

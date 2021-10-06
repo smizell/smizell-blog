@@ -4,6 +4,8 @@ date: "2021-10-06T07:49:07-05:00"
 cover: ""
 tags: []
 showFullContent: false
+features:
+- meta-api-by-design
 ---
 
 All the way back in 2002, Martin Fowler [talked about](https://www.artima.com/articles/flexibility-and-complexity) what he called Design Decay. He says:
