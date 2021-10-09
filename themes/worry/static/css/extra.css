@@ -1,7 +1,7 @@
 .book {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
+  column-gap: 15px;
   margin-bottom: 50px;
   padding: 15px;
   background-color: #eee;
