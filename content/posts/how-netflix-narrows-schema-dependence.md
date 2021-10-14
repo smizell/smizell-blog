@@ -1,11 +1,10 @@
 ---
-title: "How Netflix Reduces the Surface Area of Coupling"
-date: "2021-10-05T16:10:41-05:00"
-cover: ""
+title: How Netflix Reduces the Surface Area of Coupling
+date: '2021-10-14T07:48:58-05:00'
+cover: ''
 tags: []
-description: ""
+description: ''
 showFullContent: false
-draft: true
 ---
 
 I wrote about coupling in [API by Design](http://apibydesign.com) and the characteristics associated with it. One of those characteristics is the coupling's surface area which defines the number of resources, schemas, and properties upon which an API client depends. The larger the surface area, the more likely an API change will require an API client change. API consumers can limit this risk by relying on less of the API.
