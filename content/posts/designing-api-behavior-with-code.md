@@ -2,7 +2,7 @@
 title: "Designing API Behavior With Code"
 date: "2020-12-21T16:56:21-05:00"
 cover: ""
-tags: [api]
+tags: [api, design-with-code]
 description: ""
 showFullContent: false
 ---

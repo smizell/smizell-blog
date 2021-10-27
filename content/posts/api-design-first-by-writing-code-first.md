@@ -2,7 +2,7 @@
 title: "API Design First by Writing Code First"
 date: "2020-12-17T16:57:26-05:00"
 cover: ""
-tags: [api]
+tags: [api, design-with-code]
 description: ""
 showFullContent: false
 ---
