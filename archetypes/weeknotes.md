@@ -1,5 +1,5 @@
 ---
-title: "Weeknote {{ .TranslationBaseName | strings.TrimLeft "0" }}"
+title: "Weeknote {{ .TranslationBaseName }}"
 date: "{{ .Date }}"
 cover: ""
 tags: []

@@ -1,3 +1,4 @@
+require 'fileutils'
 require "yaml"
 
 EDITOR_CMD = "open -a \"/Applications/iA Writer.app\""
@@ -105,7 +106,7 @@ class Content
   def self.new_weeknote
     dir = File.join "posts/weeknotes", Time.now.year.to_s
     weeknotes = Dir.glob(File.join("content", dir, "*.md"))
-    return Content.new File.join(dir, "01.md"), weeknotes if weeknotes.empty?
+    return Content.new(File.join(dir, "01.md"), "weeknotes") if weeknotes.empty?
     file_name = weeknotes.map do |w|
       File.basename(w, ".md").to_i
     end.max.next.to_s.rjust(2, "0").concat(".md")
@@ -113,8 +114,8 @@ class Content
   end
 
   def create!
-    mkdir_p current_dir unless Dir.exists? File.join("content", File.dirname(@file_path))
-    `hugo new #{@file_path} -k #{@kind}`
+    FileUtils.mkdir_p File.join("content", File.dirname(@file_path)) unless Dir.exists? File.join("content", File.dirname(@file_path))
+    `hugo new #{File.join("content", @file_path)} -k #{@kind}`
   end
 
   def edit
