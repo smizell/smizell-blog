@@ -12,7 +12,7 @@ Hyrum's Law says:
 
 > With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
 
-But by itself it's not all that helpful to me. It's like saying, "with a sufficient number of people, a room will be overcrowded." Is that according to Fire Marshalls? Introverts? How big is the room? Just as important as the point of overcrowding are the symptoms of a room that's approaching overcrowding.
+But by itself it's not all that helpful to me. It's like saying, "with a sufficient number of people, a room will be overcrowded." Is that according to Fire Marshalls? Introverts? How big is the room? Does it have tall ceilings? These all focus on symptoms of overcrowding—what about the symptoms of a room that's *approaching* overcrowding?
 
 What are some things we can be thinking about and watching out for to limit the effects of people depending on all observable behavior in our APIs? How can we reframe Hyrum's Law for smaller, newer APIs? Here are my thoughts.
 
