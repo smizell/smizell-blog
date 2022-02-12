@@ -14,12 +14,12 @@ Hyrum's Law says:
 
 But by itself it's not all that helpful to me. It's like saying, "with a sufficient number of people, a room will be overcrowded." Is that according to Fire Marshalls? Introverts? How big is the room? Just as important as the point of overcrowding are the symptoms of a room that's approaching overcrowding.
 
-What are some things we can be thinking about and watching out for to limit the effects of people depending on all observable behavior in our APIs? How can we reframe Hyrum's Law for smaller, newer APIs?
+What are some things we can be thinking about and watching out for to limit the effects of people depending on all observable behavior in our APIs? How can we reframe Hyrum's Law for smaller, newer APIs? Here are my thoughts.
 
 * People are crafty. They'll find things your API does that you never realized. "If I put `%` in the search query param I get all the results without pagination!"
 * Some of those people won't be afraid to use undocumented features like these in their production application. They just want to get their work done.
 * And as soon as a consumer like this uses an undocumented feature, they will perceive any breakage as your fault. There's the obligatory [XKCD comic for this](https://xkcd.com/1172/).
-* Consumers should be careful what they depend on and providers should be careful what they expose.
+* Consumers should be careful about what they depend on and providers should be careful about what they expose.
 * We have a limited understanding of what our APIs actually do. Check out [this problem Heroku had](https://blog.heroku.com/json-schema-document-debug-apis).
 * The implementation behind your API will leak into your interface, which will leak into your consumer's code. See [here](https://www.hyrumslaw.com/) for "The Law of Implicit Interfaces": "Given enough use, there is no such thing as a private implementation."
 * We need to find ways to limit our unknown unknowns. We have to be proactive in limiting the complexity we put into our designs.
