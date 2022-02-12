@@ -14,7 +14,7 @@ Hyrum's Law says:
 
 But by itself it's not all that helpful to me. It's like saying, "with a sufficient number of people, a room will be overcrowded." Is that according to Fire Marshalls? Introverts? How big is the room? Does it have tall ceilings? These all focus on symptoms of overcrowding—what about the symptoms of a room that's *approaching* overcrowding?
 
-What are some things we can be thinking about and watching out for to limit the effects of people depending on all observable behavior in our APIs? How can we reframe Hyrum's Law for smaller, newer APIs? Here are my thoughts.
+So how can we reframe Hyrum's Law for smaller, newer APIs, for those APIs approaching the point where all observable behavior is depended on by somebody? Here are my thoughts.
 
 * People are crafty. They'll find things your API does that you never realized. "If I put `%` in the search query param I get all the results without pagination!"
 * Some of those people won't be afraid to use undocumented features like these in their production application. They just want to get their work done.
