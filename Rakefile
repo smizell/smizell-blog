@@ -74,6 +74,10 @@ namespace :schedule do
   desc "Schedule a new post"
   task :new, [:slug] do |t, args|
     post = Content.new_post(args[:slug])
+    if post.exists?
+      puts "File #{post.file_path} already exists."
+      next
+    end
     post.create!
     schedule = File.readlines SCHEDULE_FILE
     schedule.push post.file_path
@@ -114,11 +118,23 @@ class Content
   end
 
   def create!
-    FileUtils.mkdir_p File.join("content", File.dirname(@file_path)) unless Dir.exists? File.join("content", File.dirname(@file_path))
-    `hugo new #{File.join("content", @file_path)} -k #{@kind}`
+    FileUtils.mkdir_p content_path unless Dir.exists? directory
+    `hugo new #{content_path} -k #{@kind}`
   end
 
   def edit
-    `#{EDITOR_CMD} #{File.join("content", @file_path)}`
+    `#{EDITOR_CMD} #{content_path}`
+  end
+
+  def exists?
+    File.exists? content_path
+  end
+
+  def content_path
+    File.join("content", @file_path)
+  end
+
+  def directory
+    File.join("content", File.dirname(@file_path))
   end
 end
