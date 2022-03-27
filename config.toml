@@ -40,6 +40,9 @@ paginate = 10
   [markup.highlight]
     style = 'manni'
 
+  [markup.goldmark.renderer]
+    unsafe = true
+
 [permalinks]
   posts = "/posts/:year/:month/:title/"
 
