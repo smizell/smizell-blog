@@ -9,8 +9,8 @@ task :default => [:commit_content]
 desc "Commit files in the content directory"
 task :commit_content do
   `git checkout main`
-  `git add content/ schedule.txt`
-  `git commit -m "Add content #{Time.now}"`
+  `git add content/ static/ config.toml schedule.txt`
+  `git commit -S -m "Add content #{Time.now}"`
 end
 
 desc "Deploy site"
