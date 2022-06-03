@@ -29,3 +29,11 @@
 .book--meta {
   margin-top: 40px;
 }
+
+.hero-about {
+  margin-bottom: 40px;
+  font-size: 110%;
+  background-color: #eee7f0;
+  padding: 15px;
+  border-radius: 3px;
+}
