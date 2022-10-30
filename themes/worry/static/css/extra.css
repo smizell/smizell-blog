@@ -23,12 +23,6 @@
   margin: 5px 0 20px;
 }
 
-.book__cover {
-  vertical-align: top;
-  border: 1px solid #111;
-  height: 100%;
-}
-
 .book__heading {
   font-size: 18px;
   font-weight: bold;
