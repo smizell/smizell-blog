@@ -1,20 +1,26 @@
 :root {
   --san-serif-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --serif-font: Georgia Pro, Georgia, serif;
-  --bg-color: #fff;
+  --bg-color: #eee;
   --fg-color: #111;
   --secondary-color: #777;
 }
 
 body {
   margin: 0;
-  padding: 20px 0;
+  padding: 0;
   text-rendering: optimizeLegibility;
   line-height: 1.6;
   font-size: 16px;
   font-family: var(--san-serif-font);
   background-color: var(--bg-color);
   color: var(--fg-color);
+}
+
+.wrapper {
+  background-color: #fff;
+  padding-bottom: 20px;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
 }
 
 a {
@@ -37,14 +43,6 @@ blockquote {
 
 header,
 nav,
-main,
-footer {
-  /* margin: 0 auto; */
-  max-width: 610px;
-}
-
-header,
-nav,
 .content {
   padding: 0 20px;
 }
@@ -52,6 +50,20 @@ nav,
 header,
 nav {
   font-size: 16px;
+}
+
+header, nav {
+  background-color: #000;
+  color: #fff;
+}
+
+header a,
+nav a {
+  color: #fff;
+}
+
+header {
+  padding-top: 15px;
 }
 
 #site-name {
@@ -68,7 +80,7 @@ nav {
 }
 
 nav {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 nav ul {
@@ -117,6 +129,7 @@ main h3 + * {
 .readable {
   font-family: var(--serif-font);
   font-size: 18px;
+  max-width: 630px;
 }
 
 .readable hr {
@@ -212,9 +225,15 @@ pre code {
 }
 
 @media (min-width: 690px) {
-  body { padding: 40px; }
-  header, nav, .content {
-    padding-right: 0;
-    padding-left: 0;
+  body {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  .wrapper {
+    margin: 0 auto;
+    width: 780px;
+    border: 1px solid #000;
+    border-radius: 5px;
   }
 }
