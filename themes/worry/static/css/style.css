@@ -181,17 +181,13 @@ main h3 + * {
   font-style: italic;
 }
 
-.post-list {
-  display: table;
-}
-
 .post-list__item {
-  display: table-row;
+  margin-bottom: 20px;
 }
 
 .post-list__item > span {
-  display: table-cell;
-  padding: 5px;
+  display: block;
+  margin: 4px;
 }
 
 .post-list__date {
@@ -262,5 +258,17 @@ pre code {
     border-radius: 5px;
     padding-bottom: 20px;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
+  }
+  .post-list {
+    display: table;
+  }
+  
+  .post-list__item {
+    display: table-row;
+  }
+  
+  .post-list__item > span {
+    display: table-cell;
+    padding: 5px;
   }
 }
