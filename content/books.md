@@ -4,7 +4,7 @@ type: page
 ---
 
  <div class="books books__main">
-  <div class="book">
+  <!--<div class="book">
     <div><img class="book__cover" src="/images/language-oriented/cover-small.svg" alt="Book cover" width="100" /></div>
     <div>
       <span class="book__heading">The Language-Oriented Approach to API Development</span>
@@ -15,7 +15,7 @@ type: page
       </p>
       <p><a href="/books/language-oriented">Buy now</a></p>
     </div>
-  </div>
+  </div>-->
   <div class="book">
     <div><img class="book__cover" src="/images/api-by-design/cover-small.svg" alt="Book cover" width="100" /></div>
     <div>
