@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>API by Design</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="/favicon.png">
+  <meta property="twitter:site" value="@Stephen_Mizell">
+  <meta content="API by Design" property="og:site_name">
+  <meta content="/books/api-by-design/" property="og:url">
+  <meta content="How do we design and build quality APIs? How much complexity is too much for our APIs? How do we know a design decision is a good one?For most of us, it’s all guesswork. We do our best, making decisions we hope will lead to good outcomes. We know where we want to go, but we don’t have a map to get us there. Quality doesn’t happen by chance.This book is about taking out the guesswork. It’s about finding ways to understand how complexity sneaks into our APIs and grows over time. By knowing these things, we can design and build better APIs. Rather than relying on hope, we can rely on insights that help us make informed and lasting decisions.Table of contentsIntroductionThe physics of it allEntropy in API designUnderstanding schema entropyThe shape of schemasHow references affect schema entropyDigging for the hidden complexitiesKeeping the entropy outManaging the entropy withinEntropy and consumersDealing with couplingCase study: GitHub’s APIGet in touchYou can connect with Stephen on Twitter or his website. His DMs are open on Twitter, and you can find his contact information on his website.These are challenging times. If you need help paying for this book, please get in touch, and I’ll happily share a coupon for the total price off. No questions asked." property="og:description">
+  <meta content="How do we design and build quality APIs? How much complexity is too much for our APIs? How do we know a design decision is a good one?For most of us, it’s all guesswork. We do our best, making decisions we hope will lead to good outcomes. We know where we want to go, but we don’t have a map to get us there. Quality doesn’t happen by chance.This book is about taking out the guesswork. It’s about finding ways to understand how complexity sneaks into our APIs and grows over time. By knowing these things, we can design and build better APIs. Rather than relying on hope, we can rely on insights that help us make informed and lasting decisions.Table of contentsIntroductionThe physics of it allEntropy in API designUnderstanding schema entropyThe shape of schemasHow references affect schema entropyDigging for the hidden complexitiesKeeping the entropy outManaging the entropy withinEntropy and consumersDealing with couplingCase study: GitHub’s APIGet in touchYou can connect with Stephen on Twitter or his website. His DMs are open on Twitter, and you can find his contact information on his website.These are challenging times. If you need help paying for this book, please get in touch, and I’ll happily share a coupon for the total price off. No questions asked." name="description">
+  <meta property="twitter:card" value="summary_large_image" />
+  <meta property="twitter:title" value="API by Design" />
+  <meta property="twitter:domain" value="Gumroad" />
+  <meta property="twitter:description" value="How do we design and build quality APIs? How much complexity is too much for our APIs? How do we know a design decision is a good one?For most of us, it’s all guesswork. We do our best, making deci..." />
+  <meta property="twitter:image" value="/images/api-by-design/og-image.png" />
+  <link as="image" href="/images/api-by-design/og-image.png" rel="preload">
+  <meta content="/images/api-by-design/og-image.png" property="og:image">
+  <meta content="API by Design. Make informed design decisions. Design and build better APIs." property="og:image:alt">
+  <meta name="theme-color" content="#6D9BC5" />
+
+  <style>
+    * {
+      vertical-align: baseline;
+      font-weight: inherit;
+      font-family: inherit;
+      font-style: inherit;
+      font-size: 100%;
+      border: 0 none;
+      outline: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      text-rendering: optimizeLegibility;
+      line-height: 1.6;
+      font-size: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      background-color: #fff;
+      color: #111;
+    }
+
+    h2 {
+      padding-bottom: 8px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    p {
+      padding-bottom: 20px;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    a {
+      color: #111;
+    }
+
+    main {
+      margin: 0 auto;
+      max-width: 880px;
+    }
+
+    .hero {
+      padding: 20px;
+      background-color: #fff;
+      border-top: 5px solid #6D9BC5;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .hero-subheading + p {
+      padding-bottom: 20px;
+      font-size: 20px;
+    }
+
+    #title {
+      padding-bottom: 20px;
+      font-size: 45px;
+      font-weight: bold;
+    }
+
+    .hero-author {
+      padding: 40px 0 0;
+      font-size: 14px;
+    }
+
+    .book-cover {
+      padding-bottom: 20px;
+    }
+
+    .book-cover img {
+      border: 1px solid #ccc;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    }
+
+    .buy-button {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 15px 25px;
+      background-color: #6D9BC5;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+
+    .book-about {
+      padding: 40px;
+      background-color: #2E4050;
+      color: #fff;
+    }
+
+    @media (min-width: 690px) {
+      body {
+        padding: 40px;
+        background-color: #eee;
+      }
+
+      .hero {
+        padding: 40px;
+        border-radius: 3px;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
+      }
+
+      .hero-subheading + p span {
+        display: block;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="hero">
+      <h1 id="title">API by Design</h1>
+      <div class="hero-content">
+        <div class="hero-about">
+          <h2 class="hero-subheading">Design and build better APIs</h2>
+          <p>
+            <span>How do we design and build quality APIs?</span>
+            <span>How much complexity is too much for our APIs?</span>
+            <span>How do we know a design decision is a good one?</span>
+          </p>
+
+          <p>
+            <strong>For most of us, it’s all guesswork</strong>.
+            We do our best, making decisions we hope will lead to good outcomes.
+            We know where we want to go, but we don’t have a map to get us there.
+            <em>Quality doesn’t happen by chance</em>.
+          </p>
+
+          <p>
+            <strong>This book is about taking out the guesswork</strong>.
+            It’s about finding ways to understand how complexity sneaks into our APIs and grows over time. 
+            By knowing these things, we can design and build better APIs.
+            Rather than relying on hope, we can rely on insights that help us make informed and lasting decisions.
+          </p>
+
+          <a class="buy-button" href="https://smizell.gumroad.com/l/apibydesign">Buy for $15</a>
+
+          <p class="hero-author">
+            This book is by <a href="/">Stephen Mizell</a>.
+            You can <a href="https://twitter.com/Stephen_Mizell">follow him on Twitter</a>. 
+          </p>
+        </div>
+
+        <div class="book-cover">
+          <img src="/images/api-by-design/book-cover.png" width="230" height="328" alt="API by Design book cover">
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="book-about">
+      <h2>Why buy this book?</h2>
+    </div> -->
+  </main>
+</body>
+
+</html>

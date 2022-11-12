@@ -4,11 +4,14 @@
 }
 
 .book {
-  display: flex;
-  column-gap: 15px;
   padding: 15px;
   background-color: #f3f3f3;
   color: #111;
+}
+
+.book__cover {
+  float: right;
+  margin: 0 0 10px 10px;
 }
 
 .book a {
@@ -39,4 +42,12 @@
   border-top: 1px solid #777;
   border-bottom: 1px solid #777;
   line-height: 1.4em;
+}
+
+@media (min-width: 690px) {
+  .book {
+    display: flex;
+    column-gap: 15px;
+    padding: 15px;
+  }
 }
