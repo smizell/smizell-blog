@@ -1,10 +1,18 @@
 .books {
   margin-bottom: 30px;
+  padding-bottom: 15px;
+  background-color: #f3f3f3;
+  color: #111;
   border-bottom: 1px solid #777;
 }
 
+.books h2 {
+  margin: 0;
+  padding: 15px 15px 0;
+}
+
 .book {
-  padding: 15px;
+  padding: 25px 15px 5px;
   background-color: #f3f3f3;
   color: #111;
 }
@@ -16,7 +24,7 @@
 
 .book a {
   padding: 10px;
-  background-color: #111;
+  background-color: #618578;
   color: #fff;
   text-decoration: none;
   border-radius: 3px;
@@ -46,8 +54,6 @@
 
 @media (min-width: 690px) {
   .book {
-    display: flex;
-    column-gap: 15px;
-    padding: 15px;
+    padding: 15px 40px 5px;
   }
 }
