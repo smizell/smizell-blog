@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Scenarios for using the language-oriented approach - The Language-Oriented Approach to API Development</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="challenges-of-openapi.html"><strong aria-hidden="true">2.</strong> Challenges of OpenAPI</a></li><li class="chapter-item expanded "><a href="what-is-load.html"><strong aria-hidden="true">3.</strong> What is the language-oriented approach?</a></li><li class="chapter-item expanded "><a href="benefits.html"><strong aria-hidden="true">4.</strong> Benefits</a></li><li class="chapter-item expanded "><a href="tradeoffs.html"><strong aria-hidden="true">5.</strong> Tradeoffs</a></li><li class="chapter-item expanded "><a href="example.html"><strong aria-hidden="true">6.</strong> Example</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">7.</strong> Getting started with the language-oriented approach</a></li><li class="chapter-item expanded "><a href="scenarios.html" class="active"><strong aria-hidden="true">8.</strong> Scenarios for using the language-oriented approach</a></li><li class="chapter-item expanded "><a href="approaches.html"><strong aria-hidden="true">9.</strong> Comparisons to design-first and code-first</a></li><li class="chapter-item expanded "><a href="case-studies.html"><strong aria-hidden="true">10.</strong> Case studies</a></li><li class="chapter-item expanded "><a href="conclusion.html"><strong aria-hidden="true">11.</strong> Concluding Thoughts</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">12.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="about-the-author.html"><strong aria-hidden="true">13.</strong> About the author</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Language-Oriented Approach to API Development</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="scenarios-for-using-the-language-oriented-approach"><a class="header" href="#scenarios-for-using-the-language-oriented-approach">Scenarios for using the language-oriented approach</a></h1>
+<p>It's helpful to know when the language-oriented approach can be helpful. There are many different use cases for APIs, which means there are many different approaches to designing and building them. Some approaches will require more formality and rigor, whereas others might be more ad hoc and organic.</p>
+<h2 id="designing-an-api-program"><a class="header" href="#designing-an-api-program">Designing an API program</a></h2>
+<p>Throughout this book, we've discussed ways in which the language-oriented approach can help create a successful API program and put good API practices in place. A tailored DSL can be the foundation for API design across an organization.</p>
+<p>The language-oriented approach is well-suited for this scenario as it helps promote quality and consistency at scale.</p>
+<h2 id="microservices"><a class="header" href="#microservices">Microservices</a></h2>
+<p>As companies move to a microservice architecture, they need ways to ensure that teams are empowered to quickly build services that meet the organization's standards. Likewise, development teams need tools that can accelerate rapid designing, prototyping, and development. Having to learn formats like OpenAPI, style guides on how to write conformant OpenAPI, and tooling to check OpenAPI documents can feel like a hindrance to agility. Thus, it can be hard for teams to see the benefit in adding so much rigor.</p>
+<p>The language-oriented approach can minimize what people have to know to design internal APIs or microservice-oriented APIs. In addition to the design, code generation can accelerate development and ensure that the design and implementation match the organization's style.</p>
+<h2 id="public-apis"><a class="header" href="#public-apis">Public APIs</a></h2>
+<p>Internal APIs can have looser requirements regarding how they change because often the consumers of the API are nearby. People can coordinate changes in ways that they can't with public APIs. Because of this, public APIs must have controls in place to prevent unwanted changes from happening.</p>
+<p>A DSL can provide the guardrails around how people design and evolve a public API. </p>
+<h2 id="backend-for-a-frontend"><a class="header" href="#backend-for-a-frontend">Backend for a frontend</a></h2>
+<p>The browser has become a runtime for many web applications, and teams commonly rely on APIs for server interactions rather than generating HTML on the server. Some teams separate developer roles into frontend and backend for these types of web applications.</p>
+<p>To enable these frontend and backend roles to work in parallel, they need a good API design practice that enables them to design an API upfront and use it as the contract for their feature development. In doing so, frontend and backend developers can work toward the same goal.</p>
+<p>The language-oriented approach can accelerate this work by limiting the design surface area and enabling the teams to focus on the details that matter and generate OpenAPI documents and frontend API clients from the design.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="workflow.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="approaches.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="workflow.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="approaches.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

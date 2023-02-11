@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Case studies - The Language-Oriented Approach to API Development</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="challenges-of-openapi.html"><strong aria-hidden="true">2.</strong> Challenges of OpenAPI</a></li><li class="chapter-item expanded "><a href="what-is-load.html"><strong aria-hidden="true">3.</strong> What is the language-oriented approach?</a></li><li class="chapter-item expanded "><a href="benefits.html"><strong aria-hidden="true">4.</strong> Benefits</a></li><li class="chapter-item expanded "><a href="tradeoffs.html"><strong aria-hidden="true">5.</strong> Tradeoffs</a></li><li class="chapter-item expanded "><a href="example.html"><strong aria-hidden="true">6.</strong> Example</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">7.</strong> Getting started with the language-oriented approach</a></li><li class="chapter-item expanded "><a href="scenarios.html"><strong aria-hidden="true">8.</strong> Scenarios for using the language-oriented approach</a></li><li class="chapter-item expanded "><a href="approaches.html"><strong aria-hidden="true">9.</strong> Comparisons to design-first and code-first</a></li><li class="chapter-item expanded "><a href="case-studies.html" class="active"><strong aria-hidden="true">10.</strong> Case studies</a></li><li class="chapter-item expanded "><a href="conclusion.html"><strong aria-hidden="true">11.</strong> Concluding Thoughts</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">12.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="about-the-author.html"><strong aria-hidden="true">13.</strong> About the author</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Language-Oriented Approach to API Development</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="case-studies"><a class="header" href="#case-studies">Case Studies</a></h1>
+<h2 id="examples-of-language-oriented-approaches"><a class="header" href="#examples-of-language-oriented-approaches">Examples of language-oriented approaches</a></h2>
+<h3 id="aws-and-smithy"><a class="header" href="#aws-and-smithy">AWS and Smithy</a></h3>
+<p>AWS has their own language for describing services that they called <a href="https://awslabs.github.io/smithy/2.0/index.html">Smithy</a>. In a talk titled <a href="https://youtu.be/3GpZzu4guTE">Scaling APIs with Smithy</a>, Michael Dowling describes the scaling challenge they faced at AWS around API design and SDK generation. They had many public APIs and thousands of internal APIs, and they needed to scale the API design process across the entire organization. They also had to support a long list of programming languages for their CLIs and SDKs. Dowling described the situation they found themselves in when they realized they needed to scale their API program and tooling:</p>
+<blockquote>
+<p>We formed API design patterns and best practices, but knowledge sharing was often ad hoc. We also noticed that not every team followed the same practices and our customers told us this leads to steeper learning curves when moving between services.</p>
+</blockquote>
+<!-- 7 min in video -->
+<p>They created Smithy to address some of these issues. Dowling describes the purpose of frameworks and API programs as to &quot;reduce the number of choices teams need to make in order to succeed.&quot; They worked on Smithy as a way to enable teams across a large organization to build consistent, quality APIs. They were also focused on SDK and code generation, and this approach allowed them to provide better developer experiences with the SDKs and generated code.</p>
+<p>Smithy was AWS' attempt to build their own tailored API design language. They tailored Smithy around their model-first process, CLI and SDK generation, and generating OpenAPI documents. A Smithy document that was 102 lines would produce an OpenAPI document of 176 lines. The reduction in lines wasn't the only win—another victory was the reduced area the API designer had to think about and the errors Smithy prevented them from making.</p>
+<h3 id="microsoft-and-cadl"><a class="header" href="#microsoft-and-cadl">Microsoft and Cadl</a></h3>
+<p>Microsoft defines Cadl as &quot;a language for describing cloud service APIs and generating other API description languages, client and service code, documentation, and other assets.&quot; Brian Terlson, who worked on Cadl, shares some of the reasoning for it and benefits it provides in a <a href="https://mobile.twitter.com/bterlson/status/1572381666286665728">Twitter thread</a>. Terlson states:</p>
+<blockquote>
+<p>Maybe the most exciting aspect of Cadl is how you can encapsulate API patterns and package them into reusable components that you can use across your service, organization or even across ecosystems.</p>
+</blockquote>
+<p>One goal of Cadl is to provide a way for people to design APIs according to the company's standards. Terlson continues:</p>
+<blockquote>
+<p>It's hard to overstate how much this accelerates API dev. You can go beyond linting by creating API components that ensure developers can only create APIs that follow your organization's guidelines, with customized tooling that helps them eliminate any mistakes.</p>
+</blockquote>
+<p>If you start with OpenAPI, you have to also set up linting, but with Cadl, you're able to go beyond linting and provide an approach for developers that prevents them from building the wrong thing.</p>
+<h3 id="stripe-and-their-custom-ruby-dsl"><a class="header" href="#stripe-and-their-custom-ruby-dsl">Stripe and their Custom Ruby DSL</a></h3>
+<p>Stripe has a custom Ruby DSL that allows them to design their APIs and generate OpenAPI documents from it. Richard Marmorstein shares his experience with API design while working at Stripe in his talk <a href="https://youtu.be/mgRreyw-Nlg">Artisanal, machine-generated API libraries</a>. He describes Stripe's API as having 85 resources and 325 methods at the time. Their challenge was updating and releasing new versions of their seven supported SDK libraries whenever they changed their API. They did all this work by hand, but at some point, they decided to generate the SDKs to make them easier to maintain.</p>
+<p>Stripe's API DSL allows them to encode their special cases, especially for field types that OpenAPI doesn't support. Stripe can describe their special types in their DSL and generate the more verbose and less descriptive OpenAPI document that corresponds to it. They can also build their SDK code around this DSL so that they don't have to decode their special cases from a more complex OpenAPI document.</p>
+<h3 id="crunchy-data-and-their-custom-go-dsl"><a class="header" href="#crunchy-data-and-their-custom-go-dsl">Crunchy Data and their Custom GO DSL</a></h3>
+<p><a href="https://brandur.org">Brandur Leach</a> writes about his journey toward a language-oriented approach in his <a href="https://brandur.org/nanoglyphs/031-api-docs">newsletter article about API documentation</a>. His journey took him from Heroku, to Stripe, to Crunchy Data. Leach describes his work on APIs at Heroku, where they used <a href="https://json-schema.org/draft/2019-09/json-schema-hypermedia.html">JSON Hyper-Schema</a>, a general-purpose format similar to OpenAPI, to describe their API:</p>
+<blockquote>
+<p>Because the schemas lived out-of-band of the API implementation, we needed a way to show that they were right, and continued to be right even as the implementation potentially diverged.</p>
+</blockquote>
+<p>Leach built a tool called <a href="https://github.com/interagent/committee">Committee</a> to help ensure that the design in JSON Hyper-Schema matched the implementation. Leach shares what he sees as the downside to this approach, though:</p>
+<blockquote>
+<p>Manually writing Hyper-Schema was time consuming and awful. [...] Furthermore, the whole process was just pretty manual overall. Even once the schema was written, it had to be maintained in step with API development, with changes manually pushed to <a href="https://github.com/interagent/prmd">Prmd</a> and then published through Devcenter.</p>
+</blockquote>
+<p>Later at Stripe, Leach worked with Stripe's custom API tooling and tailored DSL. He left there to work at Crunchy Data. He describes the situation there before they created their DSL.</p>
+<blockquote>
+<p>The loop was: hopefully a product person would remember that a new API feature was shipping, and would poke a dev rel person to update the docs. The dev rel person would write some documentation about a feature they understood by way of two hops worth of telephone, hit some endpoints with cURL, and try to capture what came back as best as they could.</p>
+<p>The results were about what you’d expect. The docs were enough to get something working, but only about half our total API endpoints were documented. Amongst those that were, fields were often missing or extraneous as the responses had changed since the docs were originally written. Some of it was just flat out wrong.</p>
+</blockquote>
+<p>This is an example of a disjointed API development lifecycle where none of the steps seem to go together. Leach worked on a DSL in Go to address these issues. With this tool, Crunchy Data was able to design their APIs, build correct documentation from the design, and use the design at runtime. Leach sums up their work:</p>
+<blockquote>
+<p>[On] a successful merge to master, CI pushes a new OpenAPI to the web. A separate GitHub Action wakes up, runs the doc generator and commits any changes. That commit triggers a Heroku deployment and pushes the changes live. Aside from the initial merge on GitHub, no human intervention is required at any point.</p>
+</blockquote>
+<p>This is a good example of using a DSL to create a cohesive API development lifecycle, where everything is connected, from the design to development to documentation.</p>
+<h2 id="flow-and-their-approach-to-microservice-architecture"><a class="header" href="#flow-and-their-approach-to-microservice-architecture">Flow and their approach to microservice architecture</a></h2>
+<p>Michael Bryzek at <a href="https://www.flow.io">Flow</a>, which is now part of <a href="https://www.global-e.com/">Global-e</a>, talked about their approach to microservices in his talk <a href="https://youtu.be/j6ow-UemzBc">Design Microservice Architectures the Right Way</a>. In his approach, he created a design and development process that used a tailored DSL as a way to ensure all microservices followed the same styles, standards, and patterns for their APIs. Flow's design process started with the DSL, and from there, they generated OpenAPI documents, server code, and even database schemas. The API design language captured in the DSL drove the entire development process.</p>
+<p>Bryzek was looking for several benefits when crafting Flow's approach to microservices. Bryzek said good architecture:</p>
+<ul>
+<li>Scales development teams</li>
+<li>Delivers quality</li>
+<li>Enables high performance and low cost</li>
+<li>Supports future features naturally</li>
+</ul>
+<p>These are also goals of a language-oriented approach.</p>
+<p>One example that shows the power of this approach is where Bryzek shows how they added support in their DSL for tracking personally identifiable information. They could then use this information throughout their entire architecture. Below is a snippet of what their DSL looked like and how they use <code>personal_data</code> to signify personally identifiable information. The example has been condensed for the sake of brevity.</p>
+<pre><code class="language-json">{
+  &quot;user&quot;: {
+    &quot;fields&quot;: [
+      {
+        &quot;name&quot;: &quot;email&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;required&quot;: false,
+        &quot;annotations&quot;: [&quot;personal_data&quot;]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>This DSL shows how they were able to go beyond what OpenAPI provides. The DSL becomes the source of truth for their entire development workflow, influencing client and server code generation, database migrations, and as we see here, privacy policies.</p>
+<h3 id="square-and-their-custom-dsl"><a class="header" href="#square-and-their-custom-dsl">Square and their Custom DSL</a></h3>
+<p>In the blog post &quot;<a href="https://developer.squareup.com/blog/making-openapi-swagger-bearable-with-your-own-dsl/">Making OpenAPI / Swagger Bearable With Your Own DSL</a>,&quot; Sebastien Armand describes the approach he took to make it easier to deal with the complexity of OpenAPI. He defines the problem:</p>
+<blockquote>
+<p>While OpenAPI is great for describing APIs, generating client SDK code and defining API contracts, it's definitely not a great experience to write OpenAPI documents from scratch.</p>
+</blockquote>
+<p>He said that for them, an OpenAPI document describing just 10 endpoints could end up being over 1,000 lines long. This makes it challenging to maintain and read.</p>
+<p>Armand decided to create their own DSL to write OpenAPI. He shows an example in his blog post where he designs an entire API in 61 lines of his DSL and generates 550 lines of OpenAPI in YAML—nearly an order of magnitude larger than the DSL. Armand did not release the code for their DSL, though, stating:</p>
+<blockquote>
+<p>I encourage you and your team to do the same if you write Swagger / OpenAPI documents. However, it's likely your response format or your error format is specific to your API and won't fit what we've done ourselves by customizing this DSL to our service. That's why I encourage you to write your own DSL if you want to get the real benefits from this approach.</p>
+</blockquote>
+<p>His suggestion is to make a DSL because everyone's needs and patterns are different.</p>
+<h3 id="alps-and-the-unified-api-design-method"><a class="header" href="#alps-and-the-unified-api-design-method">ALPS and the Unified API Design Method</a></h3>
+<p><a href="http://alps.io/">ALPS</a>, which stands for Application Level Profile Semantics, is a format for describing the semantics of an application separate from the technical and implementation details of the application. When used for API design, ALPS acts as an interface design language, enabling people to focus on the interface's properties and actions and leave out the HTTP details. The goal is to improve the design process and make the application-level semantics reusable across many different types of implementations.</p>
+<p>Mike Amundsen, one of the authors of the <a href="https://datatracker.ietf.org/doc/html/draft-amundsen-richardson-foster-alps-04">ALPS specification</a>, has a <a href="https://github.com/mamund/alps-unified">project</a> that uses ALPS as a Unified API Design Document, which is a document that is agnostic of the protocol and implementation and can be converted into many other formats like OpenAPI, AsyncAPI, and Proto3 among others.</p>
+<p>In his talk titled <a href="https://github.com/mamund/2020-04-unified-api-design">GraphQL, gRPC and REST, Oh My!</a>, Amundsen tells an API design and governance story where an organization chooses OpenAPI as the backbone of their API design practice. After investing time and money in people, processes, and tools, the organization realizes that they want to support technologies other than OpenAPI, like gRPC or GraphQL. Amundsen asks, what should the organization do? Start over? Invest in more people, processes, and tools for these other formats? Amundsen proposes instead of using OpenAPI as the backbone of an API design practice, organizations should seek a unified design solution. Amundsen shows in his ALPS Unified project how this would be possible.</p>
+<p>Although ALPS is not a DSL tailored to a specific organization's conversational API design language, it is minimal enough that an organization could layer on a light set of governance rules and get much closer to a language-oriented approach than they could using OpenAPI directly. Organizations could also create a DSL that they map into ALPS and then into other formats like OpenAPI and AsyncAPI. The ALPS Unified project is a great example of how this is possible.</p>
+<h2 id="what-we-see-with-these-examples"><a class="header" href="#what-we-see-with-these-examples">What we see with these examples</a></h2>
+<p>These examples show organizations and projects that were searching for ways to deal with the challenges of creating an API program at scale. Ultimately, these organizations and projects saw how a format like OpenAPI is not enough for building consistent APIs and maintaining tooling such as documentation or SDKs. They found it was worth the investment in their own DSL because they saw the costs of using a general-purpose format that showed up over time. </p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="approaches.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="conclusion.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="approaches.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="conclusion.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

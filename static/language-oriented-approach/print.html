@@ -1,0 +1,621 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Language-Oriented Approach to API Development</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="challenges-of-openapi.html"><strong aria-hidden="true">2.</strong> Challenges of OpenAPI</a></li><li class="chapter-item expanded "><a href="what-is-load.html"><strong aria-hidden="true">3.</strong> What is the language-oriented approach?</a></li><li class="chapter-item expanded "><a href="benefits.html"><strong aria-hidden="true">4.</strong> Benefits</a></li><li class="chapter-item expanded "><a href="tradeoffs.html"><strong aria-hidden="true">5.</strong> Tradeoffs</a></li><li class="chapter-item expanded "><a href="example.html"><strong aria-hidden="true">6.</strong> Example</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">7.</strong> Getting started with the language-oriented approach</a></li><li class="chapter-item expanded "><a href="scenarios.html"><strong aria-hidden="true">8.</strong> Scenarios for using the language-oriented approach</a></li><li class="chapter-item expanded "><a href="approaches.html"><strong aria-hidden="true">9.</strong> Comparisons to design-first and code-first</a></li><li class="chapter-item expanded "><a href="case-studies.html"><strong aria-hidden="true">10.</strong> Case studies</a></li><li class="chapter-item expanded "><a href="conclusion.html"><strong aria-hidden="true">11.</strong> Concluding Thoughts</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">12.</strong> Glossary</a></li><li class="chapter-item expanded "><a href="about-the-author.html"><strong aria-hidden="true">13.</strong> About the author</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Language-Oriented Approach to API Development</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>How do organizations get their teams to build consistent, quality APIs? And how do they do so without affecting their teams' autonomy and speed of delivery? It's not an easy task.</p>
+<p>Many organizations try to solve this dilemma by choosing a design-first approach for API development and picking OpenAPI as the format for describing their API designs. The idea is that if people use the same format for API design, then they'll design consistent APIs, leading to a better experience for their customers.</p>
+<p>But these choices come with challenges of their own. Organizations need education programs to teach people how to use OpenAPI to design APIs. They must also define organization-wide styles and standards for API designers to follow during the design phase. And they need tools and processes to enforce those styles and standards across every API. It's expensive and time consuming to do this, in terms of both setup and in educating teams across the organization. Unfortunately, this is a small part of what's needed to institute a design-first approach at scale.</p>
+<p>The barrier to entry for learning how to design APIs with OpenAPI is high, and having to learn how to use OpenAPI in a way that conforms to the organization's styles and standards raises the barrier even higher. What started out as a single choice to use the design-first approach branches out to many other challenges—not just in defining the design process, but in finding ways to make the design process seamlessly flow into the development process and into production. Setting up an API development workflow can cause the opposite of the intended effect: teams feel constrained in their development process and feel burdened by the additional processes and tools.</p>
+<p>What if, instead of choosing OpenAPI as the API design tool and having to augment it with tooling, training, and processes to ensure quality and consistency, organizations created a tailored language for API design based on their styles and standards? What if the language captured the conversational language of the organization's API design process and made it easier to garner adoption across all the API teams? What if the language limited the scope of what people had to learn to design APIs and created a more inclusive API design process?</p>
+<p>This is the goal of the language-oriented approach to API development.</p>
+<h2 id="an-overview-of-the-language-oriented-approach"><a class="header" href="#an-overview-of-the-language-oriented-approach">An overview of the language-oriented approach</a></h2>
+<p>The language-oriented approach to API development aims to help organizations create quality-driven API programs at scale. This approach shifts the focus away from the technical details of API design that general-purpose formats like OpenAPI highlight—the URLs, HTTP methods, and JSON schemas—and shifts the discussions toward the conversational language an organization uses to talk about API designs. This results in an API design process and toolset that is easier for teams to learn and adopt, is better at ensuring API design consistency, and is better at encouraging knowledge sharing across the organization.</p>
+<p>The language-oriented approach stands in contrast to the common industry practice of restricting and governing the way people use general-purpose formats like OpenAPI. OpenAPI is a great format, but it's a large specification that allows for a wide range of API design approaches, styles, and patterns. Without applying restrictions, people across an organization will design APIs differently and inconsistently. Organizations combat this by restricting what API designers can put in their OpenAPI documents, which means people have to learn much more than OpenAPI: they also have to learn the organization's styles and standards and how to design OpenAPI documents that align with those styles and standards.</p>
+<p>This is challenging—it's a lot to learn to design APIs. And it can limit who can be included in the API design conversation.</p>
+<p>The language-oriented approach flips this around. Instead of ensuring quality and consistency by constraining the way people use general-purpose formats like OpenAPI, the language-oriented approach encourages organizations to capture the way they talk about APIs in a tailored API design language. This tailored API design language is what's called a <em>domain-specific language</em>, or DSL. A DSL for API design provides the guidance needed to design a consistent, quality API using the organization's styles and standards. Organizations tailor their DSL to the way they discuss, design, and develop APIs. Organizations can generate general-purpose formats from their DSL based on the organization's standards and guidelines, resulting in OpenAPI documents that are always consistent and conform to the organization's style.</p>
+<p>This approach provides the governance needed for teams to create consistent APIs and helps share organizational knowledge about API design. People can learn how to use the DSL—which is a much smaller and more focused language than formats like OpenAPI—and let the organization's DSL tooling deal with the details around the styles and standards that go into an OpenAPI document.</p>
+<p>The language-oriented approach does not replace the need for or use of general-purpose formats like OpenAPI. Instead it reorients the design process and shifts it away from these general-purpose formats. We don't need better general-purpose formats; we need DSLs tailored to an organization's practice. With the language-oriented approach, people generate general-purpose formats from their DSL. Formats like OpenAPI are still part of the larger API development lifecycle—they're just not the tool people use to design APIs. Thus, the language-oriented approach aims to improve upon the current approaches, not replace them.</p>
+<p>The language-oriented approach makes it easier to do upfront, customer-driven API design. It's an approach that organizations like Amazon, Microsoft, and Stripe use to drive their API programs at scale. Although it comes with its own challenges, the language-oriented approach provides many tangible benefits over the format-oriented approach.</p>
+<h2 id="what-will-we-be-looking-at-in-this-short-book"><a class="header" href="#what-will-we-be-looking-at-in-this-short-book">What will we be looking at in this short book?</a></h2>
+<p>We need a system for thinking about the design-first approach that goes beyond authoring OpenAPI documents as the first step in the design process. &quot;Design-first&quot; has become synonymous with &quot;OpenAPI-first&quot; in the industry. However, we need approaches that help people think about design-first in the context of an organization's practices and style. This short book describes what the language-oriented approach is, shares more details around the challenges and shortcomings of the format-oriented approaches that use OpenAPI, provides benefits and tradeoffs to the language-oriented approach, and looks at companies and projects that follow or employ this approach.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-cascading-challenges-of-openapi-and-design-first"><a class="header" href="#the-cascading-challenges-of-openapi-and-design-first">The cascading challenges of OpenAPI and design-first</a></h1>
+<p>It's common for API designs to drift apart in an organization. Over time, they become inconsistent and differ in quality, especially as organizations build more APIs and rely on them for leveraging a competitive advantage. At some point—as a way to incorporate a product mindset into their API approach and improve the developer experience for their customers—an organization may institute an API program that encourages quality, consistency, and knowledge sharing across their API development teams and workflows.</p>
+<p>The industry pushes organizations to standardize around a format-oriented, design-first approach. In this approach, cross-functional teams—product managers, developers, QA engineers, and others—work together on an API design before anyone starts writing code and building the API. Once established, the API design becomes the source of truth, guiding the development process on how to build the API and instructing the QA engineers on how to use and test the API. The design-first approach is a good approach, but being format-oriented complicates the process.</p>
+<h2 id="on-choosing-openapi"><a class="header" href="#on-choosing-openapi">On choosing OpenAPI</a></h2>
+<p>The most popular general-purpose format in the industry for defining the HTTP and schema details for an API is OpenAPI. Many organizations choose OpenAPI as their API description language because of its popularity in the industry, its wide range of tooling support, and the breadth of design possibilities the OpenAPI specification affords. OpenAPI can work as the foundational piece of a design-first approach within an organization's API program.</p>
+<p>Although OpenAPI is a great specification with many great tools, in choosing OpenAPI to drive their design-first approach, organizations set themselves up for a cascade of challenges: a solution to one problem leads to the creation of more. The industry may be set on OpenAPI as the standard format, but the industry is fractured on which tools, processes, and workflows organizations should use to develop a holistic API program that their teams can adopt.</p>
+<h2 id="authoring-openapi-versus-reading-openapi"><a class="header" href="#authoring-openapi-versus-reading-openapi">Authoring OpenAPI versus reading OpenAPI</a></h2>
+<p>OpenAPI is a great tool for describing the details of an API, but it’s not a great tool for people to use to design APIs. Teaching people how to use OpenAPI for authoring can incur a significant cost to adoption.</p>
+<p>In a format-oriented approach, API designers work directly with OpenAPI as they design APIs. Some people write YAML directly and others use tools that provide a way to interact with OpenAPI graphically. This adds required skills that go beyond the ability to read OpenAPI. Tools like <a href="https://swagger.io/tools/swagger-ui/">Swagger UI</a> and <a href="https://redocly.com/redoc/">Redoc</a> make it easier to read and use OpenAPI as a reference. But learning how to author OpenAPI—even with graphical tools—can take time, and experience is required to do it well. This is an often overlooked cost of using OpenAPI. Though it's a great format with a great tooling ecosystem, it takes time to learn how to use it for designing APIs directly.</p>
+<h2 id="governing-how-people-write-openapi"><a class="header" href="#governing-how-people-write-openapi">Governing how people write OpenAPI</a></h2>
+<p>Organizations need a way to ensure people use OpenAPI correctly so that everyone designs and builds APIs the same way with the same level of quality. To do so, organizations define an <strong>API governance model</strong>, which is a set of practices, patterns, and rules that guide the API design process and are applied to an OpenAPI document at design-time and build-time to check for conformance.</p>
+<p>An API governance model might include the patterns for URLs, the required status codes for certain operation types, the casing to use for JSON properties, the required parts of an OpenAPI document, and the parts of the OpenAPI specification that are not allowed. The challenge is this: not only does every API team need to understand how to design using OpenAPI, but they must also understand how to use OpenAPI that follow the organizational constraints defined in an API governance model. This is a barrier to entry for newcomers and a high cognitive load for designers.</p>
+<p>Applying an API governance model at scale is challenging. Without tooling, organizations need a centralized API design review process. An API governance model requires training and knowledge sharing to help people learn the patterns and rules and the reasons for them being in the model. To promote the success of an API program, organizations build or buy tools that programmatically apply the rules of an API governance model at scale. These tools apply the API governance model to OpenAPI documents during the design, development, and deployment phases and act as a key tool for API development. Checking OpenAPI documents for conformance is commonly referred to as <em>linting</em>, and whereas it can catch many issues, it cannot fully constrain the use of OpenAPI because it is focused on the format—not on the design process itself.</p>
+<h2 id="additional-challenges-arise"><a class="header" href="#additional-challenges-arise">Additional challenges arise</a></h2>
+<p>Consider the challenges an organization faces in garnering adoption of OpenAPI and an API governance model. They must do the following:</p>
+<ul>
+<li>Train people on how to use OpenAPI to design APIs</li>
+<li>Define an API governance model for guiding API designs</li>
+<li>Codify an API governance model in tooling and apply it programmatically</li>
+<li>Train people on the requirements, constraints, and benefits of the API governance model</li>
+<li>Incorporate this new API design and development workflow into every team's workflow</li>
+<li>Evolve the API governance model over time</li>
+</ul>
+<p>This is an expensive and ongoing project. It takes expertise. And even after checking off the items above, an organization is left with other challenges:</p>
+<ul>
+<li>How do teams ensure that the API design matches the implementation? How do engineers know when they've correctly developed the API?</li>
+<li>How do teams ensure that the API documentation is correct?</li>
+<li>How do teams ensure that their API tests match the API design?</li>
+</ul>
+<p>The possibility for inconsistency is always present. These challenges can lead to a disjointed API development lifecycle, such that the API design and documentation are disconnected from the testing and implementation.</p>
+<p>It may take months of work to realize that all the time and effort that went into setting up OpenAPI with API governance model tooling has led to a disjointed API development lifecycle that doesn't provide all the desired benefits. Moreover, if an organization is fortunate enough to catch these secondary challenges up front, they will still need the expertise to approach the challenges and ensure that they can roll out and scale up their API program.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-a-language-oriented-approach"><a class="header" href="#what-is-a-language-oriented-approach">What is a language-oriented approach?</a></h1>
+<p>Hidden within the cascade of challenges of OpenAPI is the task of defining the language an organization uses to talk about and design APIs—their conversational language. The conversational language captures the terms, requirements, patterns, standards, and best practices that people use conversationally as they design APIs.</p>
+<p>OpenAPI isn't enough to ensure that people follow the organization's conversational language. Processes, workflows, and tools are required to augment OpenAPI. With the language-oriented approach, however, organizations orient their API design and development workflows around the organization's conversational language.</p>
+<p>The language-oriented approach encourages organizations to begin building an API program by defining their conversational language and then creating a tailored DSL around it. Organizations follow this by building tooling around their tailored DSL, such as tooling that generates OpenAPI documents that conform to their API guidelines and standards.</p>
+<h2 id="conversational-language-as-a-way-to-talk-about-api-design"><a class="header" href="#conversational-language-as-a-way-to-talk-about-api-design">Conversational language as a way to talk about API design</a></h2>
+<p>For example, when designing an API, someone might say the phrase &quot;to create a new customer in our system, API consumers should send a POST request to the collection resource URL for the customer.&quot; Industry terms are present in this statement—terms like &quot;POST request&quot; and &quot;URL&quot; that fit within HTTP and URL standards—but there are also terms that mean something within the given context of the organization. What's a collection? What does a collection URL look like? When would someone use a collection URL? These context-specific terms may be unique to the organization or to a given API design standard.</p>
+<p>As an organization standardizes the way they build APIs, they define and refine their conversational language as a way to both restrict and guide API design discussions. The conversational language provides guardrails around what a design can and cannot include.</p>
+<h2 id="making-the-conversational-language-first-class-with-a-tailored-dsl"><a class="header" href="#making-the-conversational-language-first-class-with-a-tailored-dsl">Making the conversational language first class with a tailored DSL</a></h2>
+<p>With the language-oriented approach, the conversational language is first class. There's no need to translate an API design discussion into an OpenAPI document. The design is captured directly in the DSL using the same language. The DSL is thus an organization's way of codifying the conversational language. Using the example above, the DSL might provide a way of describing a &quot;collection resource&quot; that allows for a &quot;create&quot; action, all while leaving out the more technical details.</p>
+<h2 id="leaving-the-details-to-tooling"><a class="header" href="#leaving-the-details-to-tooling">Leaving the details to tooling</a></h2>
+<p>How an organization represents &quot;collection resources&quot; and &quot;create actions&quot; in OpenAPI is left up to the tooling that generates the OpenAPI document. A collection resource might have a specific pattern for URLs. There's no need for that to be part of the design conversation because the organization has already decided what that pattern should be.</p>
+<p>The language-oriented approach focuses on defining the organization's language first—the way they talk about APIs—then building a DSL around that language that can be integrated with industry-wide tooling and standards like OpenAPI. In this way, organizations would use their DSL as a language in a design-first approach. </p>
+<h2 id="from-the-particulars-to-the-universal"><a class="header" href="#from-the-particulars-to-the-universal">From the particulars to the universal</a></h2>
+<p>Design-first encourages people to design an API and its features before building and deploying the API so as to achieve a better API design that conforms to the organizational standards. The language-oriented approach seeks to continue this best practice and improve upon it rather than abandon it.</p>
+<p>The language-oriented approach improves on current approaches by going from the particulars to the universal—from the tailored DSL to the general-purpose format. People start the API design process with their tailored DSL, capturing the particulars of the API design, then they use tooling to convert that DSL into something universal and general-purpose like OpenAPI. With a format-oriented approach, this process is flipped, requiring people start with a general-purpose format and apply governance rules to limit that format to the particular details of the organization.</p>
+<p>Focusing on the particulars allows people in an organization to ignore the areas of the universal that are irrelevant to the design conversation and let tooling deal with how their conversational language maps to a general-purpose format like OpenAPI. This improves the design process and ensures a better API design.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="benefits"><a class="header" href="#benefits">Benefits</a></h1>
+<h2 id="improved-api-design-workflow"><a class="header" href="#improved-api-design-workflow">Improved API design workflow</a></h2>
+<p>When you can focus an API design discussion on the conversational language of the organization, you can include a cross-functional group of people that may not be familiar with HTTP, JSON, or URL patterns. This is because a tailored DSL can omit those technical details and rely on the tooling to apply them to the final technical design. Including more people improves the design process, and constraining the design with the organization's conversational language helps move toward a higher-quality design. The language-oriented approach can help bring newcomers and senior designers together in a discussion, as well as help those newcomers quickly learn API design through a DSL and toolset. Non-technical people and newcomers can join the discussion immediately rather than requiring training on general-purpose formats, API design practices, and tooling.</p>
+<p>Including product, marketing, and sales people in the discussion helps ensure that the API design matches the terms used to talk about the product with the organization's customers. Leaving these roles out of the design discussion risks using mismatched terms. A cross-functional group will design a better API with a language-oriented approach.</p>
+<p>Similarly, a design process that narrows the conversation to the necessary design details will enable a shorter feedback loop between the conversation and the design. The design discussion allows people to experiment with different design ideas quickly and rely on tooling to see how their ideas impact the technical details rather than having to know all the details on their own.</p>
+<h2 id="faster-adoption"><a class="header" href="#faster-adoption">Faster adoption</a></h2>
+<p>Teams can adopt a DSL faster than they can a general-purpose format and supplemental tooling. The language-oriented approach makes language the most important thing and simplifies the surface area of concepts and practices the teams need to learn and adopt. If people can learn the DSL, then they immediately get all the additional workflow benefits of the language-oriented approach that would normally require a considerable amount of work in a format-oriented approach.</p>
+<p>A DSL does not eliminate the need for developers to learn HTTP, JSON, URL patterns, or the organization's style guide. However, it does eliminate the need for them to know how to design APIs using those details. Likewise, it reduces the level of expertise they need for API design. This enables non-technical people to design technical APIs by focusing on the DSL and leaving all the other technical standards and specifications to tooling.</p>
+<h2 id="multiple-tailored-approaches"><a class="header" href="#multiple-tailored-approaches">Multiple tailored approaches</a></h2>
+<p>Many organizations have multiple ways to build APIs—the old way, the really old way, and the new way—not to mention varying approaches like building async APIs, gRPC, and GraphQL. Each approach can be supported in tooling or have its own DSL if necessary. The language-oriented approach doesn't prevent an organization from creating more than one DSL. Rather, the language-oriented approach encourages finding ways to capture the conversational language in a DSL. Sometimes there are multiple conversational languages due to differing protocols and tools.</p>
+<p>Over time, with a language-oriented approach, organizations can get comfortable with the idea of creating tailored languages that help them share organizational knowledge at scale. The tailored languages don't have to be just for APIs: they can be for UIs, for other technologies, for internal workflows and processes, and for common design patterns.</p>
+<h2 id="generating-openapi-from-the-dsl"><a class="header" href="#generating-openapi-from-the-dsl">Generating OpenAPI from the DSL</a></h2>
+<p>Organizations can generate compliant OpenAPI documents. A DSL that has a fraction of the lines can generate OpenAPI documents many times its size and complexity. This is a benefit of going from the particular to the universal. An OpenAPI that is generated from a DSL will be fully compliant with the organization's standards and guidelines because the DSL prevents people from designing a non-compliant API. Although it doesn't guarantee that the API solves the use cases or problems, it does guarantee the design is compliant.</p>
+<p>Additionally, organizations can go beyond what OpenAPI offers with their DSL, incorporating conversational languages and approaches that OpenAPI doesn't support. OpenAPI allows for using a wide range of API standards and practices, but people have to know these standards and practices well enough to include them in their API design. A good example of this is the standard for <a href="https://www.rfc-editor.org/rfc/rfc7232">conditional requests</a>. To use this standard, people need to know which HTTP headers to use and where to put the headers in the OpenAPI document.</p>
+<p>Instead of knowing these details, a DSL and related tooling can apply these standards and practices automatically based on the API design. With conditional requests, a DSL might have a feature to say a specific resource supports <a href="https://www.rfc-editor.org/rfc/rfc7232#section-2.3">ETags</a>, and the tooling would be able to add the relevant HTTP headers and status codes into the resulting OpenAPI document.</p>
+<h2 id="building-workflows-and-change-management-into-the-dsl"><a class="header" href="#building-workflows-and-change-management-into-the-dsl">Building workflows and change management into the DSL</a></h2>
+<p>Some parts of an API design might be in the conceptual phase. Others might be in development, and others may be meant to be restricted to certain roles, such as admins or vendors. It can be helpful to have OpenAPI documents for each of these scenarios and roles. Organizations can allow designers and developers to label parts of the API design based on these scenarios, roles, use cases, and statuses. OpenAPI doesn't provide support for this, but a DSL can.</p>
+<p>Building workflows and change management into the DSL can enable people to play with design ideas apart from the development phase. It can give people the freedom to explore API features while keeping the designs of the features separate from public and vendor-specific API documentation. These labels can signal to others that certain parts of the API are conceptual and should not be developed yet. Making workflow a first-class feature of the DSL can also provide the basis for notifying consumers of upcoming changes.</p>
+<p>Lastly, organizations can build features to express deprecation and sunsetting directly into their DSL. They can add messaging, dates, and plans for deprecating parts of the API and eventually sunsetting it. And OpenAPI generators can add deprecation and <a href="https://www.rfc-editor.org/rfc/rfc8594">sunset headers</a> into the generated OpenAPI document to make the process easier.</p>
+<h2 id="api-compliance-tests"><a class="header" href="#api-compliance-tests">API compliance tests</a></h2>
+<p>A DSL allows organizations to ensure that the API design and implementation match. Organizations can create small tools that generate tests based on the design rather than writing tests separate from the design. Using their DSL in their tests, teams can ensure that the design and implementation match. This can promote a test-driven development approach where the failing compliance tests guide the team on how to implement the API. With tests like these, people can also understand the impacts of an API change. This is another way of improving quality: not only will the design and implementation always stay in sync, but so will the design and tests.</p>
+<h2 id="runtime-tooling"><a class="header" href="#runtime-tooling">Runtime tooling</a></h2>
+<p>A DSL can be embedded into a programming language so that it can be used for runtime validations. The DSL becomes the source of truth on the schemas for the request and response bodies. If used in runtime, then it acts as another step to ensure that the design and implementation match. This is not unique to the language-oriented approach; JSON Schema from OpenAPI can be used the same way. However, the language-oriented approach does allow for performing validation beyond what JSON Schema allows if the scenario calls for it.</p>
+<p>The language-oriented approach is about orienting the entire API development lifecycle, even the runtime, around the organization's conversational language. The DSL is a tool to make this possible—it guides the design but can also guide the development, testing, and deployment phases of the API development lifecycle.</p>
+<h2 id="designing-with-code"><a class="header" href="#designing-with-code">Designing with code</a></h2>
+<p>There's an ongoing debate about which approach is best for API design: design-first or code-first. If a DSL is embedded into a programming language, then teams can use the DSL to design API changes in the code before writing the implementation. This promotes rapid prototyping as the implementation has a direct dependency on the design. Engineers can work through a design and immediately see how it would look within their code and what parts of the application it affects. Moreover, it can allow for people to follow a design-first approach by enabling them to iterate on a design and prototype ideas with code as part of the design process.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tradeoffs"><a class="header" href="#tradeoffs">Tradeoffs</a></h1>
+<h2 id="you-still-need-expertise"><a class="header" href="#you-still-need-expertise">You still need expertise</a></h2>
+<p>The language-oriented approach requires someone who can lead the organization through the process of creating a DSL and the tooling around it. Over time, tooling for creating DSLs will improve as more people adopt the language-oriented approach, but for now, it requires experienced practitioners.</p>
+<p>Expertise is always needed to create a good API program, and development work is always required to put good practice in place. With the language-oriented approach, the practitioner works to define how the conversational language translates into a format like OpenAPI, whereas with a format-oriented approach, the practitioner works to restrict the use of OpenAPI to match the conversational language. The language-oriented approach changes the kind of work needed, but it does not remove it.</p>
+<h2 id="you-still-need-to-create-and-codify-an-api-governance-model"><a class="header" href="#you-still-need-to-create-and-codify-an-api-governance-model">You still need to create and codify an API governance model</a></h2>
+<p>With any approach, you're going to create an API governance model and the tooling around it. The language-oriented approach only changes the way you approach the API governance model. Similar to how you need expertise to develop tooling around the language-oriented approach, you still need expertise who can help define an API governance model and apply it through tooling.</p>
+<p>One difference is that API designers do not have to know how to write OpenAPI documents that conform to the API governance model—the tooling can do that for them. However, the language-oriented approach doesn't remove the need for an API governance model.</p>
+<h2 id="you-still-need-openapi-knowledge"><a class="header" href="#you-still-need-openapi-knowledge">You still need OpenAPI knowledge</a></h2>
+<p>You don't abandon OpenAPI when you follow the language-oriented approach. This is because the language-oriented approach is not about creating an alternative general-purpose format. It's about limiting the surface area of API design so people can generate general-purpose formats that meet organizational standards and guidelines. Organizations will continue to need people who understand OpenAPI, its tooling, and its benefits. The upside of the language-oriented approach is that it doesn't require everyone to know how to design APIs in OpenAPI directly. They might need to know how to read and use the tooling around OpenAPI, but they won't have to know the details and nuances of the format.</p>
+<h2 id="you-will-continue-having-maintenance-costs"><a class="header" href="#you-will-continue-having-maintenance-costs">You will continue having maintenance costs</a></h2>
+<p>The language-oriented approach requires upfront and ongoing work. It requires work to make sure all the tooling and workflows successfully meet the needs of the organization. Organizations will have to continually evaluate whether their approach is suiting the needs of their teams and customers, and they will have to make adjustments along the way. Additionally, since they have tailored tools and workflows, they will have to work to maintain the tools and workflows over time. In some cases, where organizations build lots of tooling around their DSL, more maintenance costs may be involved than those incurred by a format-oriented approach.</p>
+<h2 id="you-will-create-a-workflow-that-is-counter-to-the-industry-wide-approach"><a class="header" href="#you-will-create-a-workflow-that-is-counter-to-the-industry-wide-approach">You will create a workflow that is counter to the industry-wide approach</a></h2>
+<p>The language-oriented approach may give the feel and appearance of being a Not Invented Here (NIH) approach by which organizations build their own tools rather than purchase turnkey software. This can make the language-oriented approach a harder sell at times. It also affects new hires who may be familiar with turnkey processes and solutions who have to shift their approach in how they design and develop APIs.</p>
+<p>The language-oriented approach accepts that people will always have to learn an organization's conversational language, no matter the approach. However, even though people might have to learn more with a format-oriented approach, the familiarity of OpenAPI and the tooling around it might make the approach seem like the better option. This is something to consider when deciding whether or not to follow the language-oriented approach and create a DSL. Do the benefits outweigh the familiarity of OpenAPI?</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="example"><a class="header" href="#example">Example</a></h1>
+<p>We can compare the language-oriented approach with a format-oriented approach that uses OpenAPI as the format. In this example, we'll build an API to keep track of automobiles.</p>
+<h2 id="the-high-level-api-design"><a class="header" href="#the-high-level-api-design">The high-level API design</a></h2>
+<p>For this example, consider an API that allows a consumer to do the following:</p>
+<ul>
+<li>Retrieve a collection of automobiles at the URL <code>/automobiles</code> using the <code>GET</code> HTTP method, which returns an array of automobile representations in JSON. The status code should be <code>200</code>.</li>
+<li>Retrieve a single automobile item at <code>/automobiles/{id}</code> using the <code>GET</code> HTTP method, which returns an automobile representation in JSON. The status code should be <code>200</code>.</li>
+</ul>
+<p>In addition to these details, the automobile schema should include the properties <code>id</code>, <code>make</code>, <code>model</code>, and <code>year</code>, which should all be strings.</p>
+<h2 id="extracting-the-rules-for-an-api-governance-model"><a class="header" href="#extracting-the-rules-for-an-api-governance-model">Extracting the rules for an API governance model</a></h2>
+<p>We'll define a few rules regarding how we design APIs. This will be a small set compared to a full API governance model. The applicable rules for this design might be as follows:</p>
+<ul>
+<li>All collection URLs should be plural (e.g. <code>/automobiles</code>)</li>
+<li>All item URLs should be the collection URL with an ID after it (e.g. <code>/automobiles/{id}</code>)</li>
+<li>Use the <code>GET</code> method to retrieve the collection and item</li>
+<li>Return a <code>200</code> on successful requests</li>
+</ul>
+<p>An organization might define these rules in a human-readable document and require people to use them when designing APIs. These rules—along with many others—become the foundation for the API governance model.</p>
+<h2 id="how-would-we-define-this-in-openapi"><a class="header" href="#how-would-we-define-this-in-openapi">How would we define this in OpenAPI?</a></h2>
+<p>In OpenAPI, we'd define the API this way:</p>
+<pre><code class="language-yaml">openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Automobile API
+paths:
+  /automobiles:
+    get:
+      operationId: list-automobiles
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: &quot;#/components/schemas/AutomobileCollection&quot;
+  /automobiles/{automobile_id}:
+    get:
+      operationId: retrieve-automobile
+      parameters:
+      - name: automobile_id
+        in: path
+        required: true
+        schema: {type: &quot;string&quot;}
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: &quot;#/components/schemas/AutomobileItem&quot;
+components:
+  schemas:
+    AutomobileItem:
+      type: object
+      properties:
+        id: {type: &quot;string&quot;}
+        make: {type: &quot;string&quot;}
+        model: {type: &quot;string&quot;}
+        year: {type: &quot;string&quot;}
+    AutomobileCollection:
+      type: array
+      items:
+        $ref: &quot;#/components/schemas/AutomobileItem&quot;
+</code></pre>
+<p>Here we can encounter the challenge: how do we know that we defined the API correctly based on the API governance model? Did we use the correct URL patterns for collections and items? Did we use the right status codes? We'd need to codify the rules of our API governance model so that we can apply it to any OpenAPI document we write. This would require a linting tool to make these kinds of checks and provide feedback during the design process.</p>
+<p>Designing an API this way requires a few things from us:</p>
+<ul>
+<li>We have to know OpenAPI</li>
+<li>We have to be able to map our API conversation into OpenAPI</li>
+<li>We have to know the API governance model and understand how to design APIs that follow the rules</li>
+<li>We'd need tools that could apply the API governance model rules to an OpenAPI document</li>
+</ul>
+<p>To create a successful API program that uses OpenAPI, an organization needs to train people on OpenAPI, define API governance model rules, acquire tools, then create a path for teams to take to adopt this new workflow.</p>
+<h2 id="how-would-we-define-this-api-using-a-language-oriented-approach"><a class="header" href="#how-would-we-define-this-api-using-a-language-oriented-approach">How would we define this API using a language-oriented approach?</a></h2>
+<p>First, consider the following: what are the essentials to the design? Many of the technical details like URL patterns, HTTP methods, and status codes are fixed. The dynamic parts of the design are the resources and their properties. </p>
+<p>Our first task would be to design a DSL. In an ideal situation, we'd create this prior to the API design process. For the current needs, we might design a DSL that includes the resource name, the resource's operations and properties, and each property's types. The DSL might look like this:</p>
+<pre><code class="language-yaml">resources:
+- name: &lt;resource-name&gt;
+  operations:
+  - &lt;operation-name: create, read, update, delete, or list&gt;
+  properties:
+    &lt;property-name&gt;: &lt;property-type&gt;
+</code></pre>
+<p>Using this DSL, we'd come up with a design for our API that looks like this:</p>
+<pre><code class="language-yaml">resources:
+- name: automobile
+  operations:
+  - list
+  - retrieve
+  properties:
+    make: string
+    model: string
+    year: string
+</code></pre>
+<p>The OpenAPI document we wrote above by hand was 43 lines. This document using a DSL is nine. Where did all those other details go? Where are the status codes and schemas? What do the URLs look like? Where is the <code>id</code> property? These are details that can be left to the tooling that generates the OpenAPI document from the DSL. This is because we know how to generate the OpenAPI operations, include all the right status codes for the right operations, generate URLs based on the resource name, and create the schemas from the properties including the common properties like <code>id</code>. We can do this because the details around a large portion of the OpenAPI document are fixed. There's no imperative for people to learn how to write these details in OpenAPI—software can do the work for them.</p>
+<p>It's important to note again that this example doesn't provide a full DSL. It's minimal and lacking a lot of features you'd need to build complete APIs. But it shows how you can start small and build up as the needs arise.</p>
+<p>You can view a working example of this on GitHub at https://github.com/smizell/language-oriented-example. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="getting-started-with-the-language-oriented-approach"><a class="header" href="#getting-started-with-the-language-oriented-approach">Getting started with the Language-Oriented Approach</a></h1>
+<h2 id="the-steps-for-getting-started"><a class="header" href="#the-steps-for-getting-started">The steps for getting started</a></h2>
+<h3 id="1-capture-the-conversational-language"><a class="header" href="#1-capture-the-conversational-language">1. Capture the conversational language</a></h3>
+<p>The first step of the language-oriented approach is to work through capturing the conversational language. What are the terms used during the API design process? What are the patterns used in API designs? What are the ways those terms and patterns are used to create boundaries and guardrails around the API design? This conversational language will contain technical and non-technical details and will capture the style and design approach of the organization.</p>
+<p>Defining this conversational language can be as straightforward as talking about API designs and documenting the words, topics, and phrases used. This task is required of any approach to API design, and it's especially important for the language-oriented approach. It's a process that can be quick or take an organization months with a dedicated API team.</p>
+<p>It's helpful in this step to examine existing API style guides to see how other companies approach API design. Arnaud Lauret created a repository of these style guides called the <a href="https://apihandyman.io/toolbox/apistylebook/">API Stylebook</a>. Though a conversational language can go beyond style guides, these style guides can be a great starting point.</p>
+<h3 id="2-categorize-the-conversational-language"><a class="header" href="#2-categorize-the-conversational-language">2. Categorize the conversational language</a></h3>
+<p>The next part is to categorize the conversational language into the language that is necessary for the design discussion and language that can be applied through tooling. </p>
+<p>The goal is to find a design language that strips away the details that are already decided. Organizations know their URL patterns. They know what HTTP methods to use when and what status codes to use for those HTTP methods: they also know the formats for their error messages. These are all details that can be left up to the tooling.</p>
+<p>The resulting design language should provide enough terminology that allows for designing APIs based on the organization's style. The design language may contain some technical details, but only those details that require discussion during an API design conversation.</p>
+<p>This separation is what creates the value of the language-oriented approach. In orienting the design process around the conversational language necessary for an API design, and relying on tooling to add the other details, people can design APIs quickly and iterate on ideas, all while generating conformant OpenAPI documents.</p>
+<h3 id="3-codify-design-language-as-a-dsl"><a class="header" href="#3-codify-design-language-as-a-dsl">3. Codify design language as a DSL</a></h3>
+<p>API designers use design language to describe the unique details around an API. For example, a designer might describe a customer resource and include the properties that make up a customer, such as name, email, and address. If these are the terms the organization uses, then the DSL should allow for capturing these details using terms like &quot;resources&quot; and &quot;properties&quot; and should provide the framework for discussing and authoring an API separate from the more technical and fixed details.</p>
+<p>The DSL should map to the conversational language. It should give people the vocabulary they need to design an API while limiting the details that can be left up to the tooling. The DSL should enable rapid design discussions by removing the hindrances related to making decisions that have already been made. There isn't a magic formula for finding this balance. It takes time and collaborative work to make a DSL that provides the right level of freedom and restriction.</p>
+<p>It's also important to keep the DSL minimal and focused. It's tempting to add features to the DSL &quot;just in case.&quot; In the early stages of creating a DSL, only add what's needed. Base the DSL on real-world scenarios. Work with someone who is designing an API and determine whether the DSL provides what's needed for a full design. Talk with non-technical people to see if the language makes sense in a conversational setting. There will always be the pull to move from &quot;tailored&quot; to &quot;general-purpose&quot;: but the benefits come from keeping the DSL tailored to the organization.</p>
+<p>Lastly, creating a DSL offers organizations the opportunity to be prescriptive and opinionated regarding API design for the sake of lowering the barrier to entry. Formats like OpenAPI try to not incorporate opinions because they're meant for describing many different kinds of API designs. But because a DSL is meant only for the context of the organization, it can be prescriptive based on that context. This falls in line with keeping the DSL minimal and focused—providing freedoms and restrictions and finding balance in what people can and cannot describe.</p>
+<h3 id="4-build-tooling-around-the-dsl"><a class="header" href="#4-build-tooling-around-the-dsl">4. Build tooling around the DSL</a></h3>
+<p>A format-oriented API development workflow validates a general-purpose format such as OpenAPI after someone writes the document. The challenge is that an API designer can use any feature of the general-purpose format during the design process, but they will only find out whether their design conforms to the API governance model once they validate the design. There's no good way to skip the details that can be left out of the design conversation.</p>
+<p>The language-oriented approach is different. With it, the designer uses a DSL to design the API and relies on tooling to generate a general-purpose format. The tooling uses the DSL and adds the details that people can skip. Put another way, the API designer writes in a language tailored to their organization's conversational language, then generates a general-purpose format like OpenAPI that conforms to the organization's API governance model. The API governance model is implicitly applied as part of this process because the OpenAPI document will always follow the organization's rules.</p>
+<p>The tooling allows the organization to use the DSL as the source of truth for an API design. This process makes the DSL a human-readable reference as well as a be machine-readable format that can be used at design, build, and runtime.</p>
+<h3 id="5-create-training-and-documentation-on-using-the-dsl"><a class="header" href="#5-create-training-and-documentation-on-using-the-dsl">5. Create training and documentation on using the DSL</a></h3>
+<p>Both general-purpose formats and DSLs require training, but DSLs limit what API designers have to use during the design process. Organizations can organize training and documentation around their DSL and how it applies to the conversational language and API style as a whole. People can still learn the API governance model, but they don't have to know it well enough to author API designs. This improves adoption due to the limited surface area of API design terminology.</p>
+<h2 id="technical-approaches-for-creating-a-tailored-api-design-language"><a class="header" href="#technical-approaches-for-creating-a-tailored-api-design-language">Technical approaches for creating a tailored API design language</a></h2>
+<h3 id="creating-a-yaml-format"><a class="header" href="#creating-a-yaml-format">Creating a YAML format</a></h3>
+<p>The automobile API example above used YAML as the format for the DSL. Although YAML works, it can be complex, and create user-experience issues.</p>
+<ul>
+<li>YAML uses white space as a way to distinguish nesting. This works well in shorter documents but becomes more difficult to deal with in larger documents.</li>
+<li>If you use YAML, then you need a way to validate the YAML. This takes work to produce a good user experience.</li>
+</ul>
+<p>YAML is a great starting point, as no tooling or development environment is needed.</p>
+<p>The YAML from the example section in this book looked like this:</p>
+<pre><code class="language-yaml">resources:
+- name: automobile
+  operations:
+  - list
+  - retrieve
+  properties:
+    make: string
+    model: string
+    year: string
+</code></pre>
+<h3 id="using-code"><a class="header" href="#using-code">Using code</a></h3>
+<p>Another option is to embed the DSL in a programming language. For instance, the automobile API example might look like this in Python.</p>
+<pre><code class="language-python">Resource(
+  name=&quot;automobile&quot;,
+  properties=[
+    Property(&quot;make&quot;)
+    Property(&quot;model&quot;)
+    Property(&quot;year&quot;)
+  ],
+  operations=[&quot;list&quot;, &quot;retrieve&quot;]
+)
+</code></pre>
+<p>The DSL here is Python code. It can be checked for correctness and provide nice integrated development environment (IDE) support. </p>
+<p>Many organizations are discovering that code is better than YAML. AWS created the <a href="https://docs.aws.amazon.com/cdk/v2/guide/home.html">Cloud Development Kit</a> (CDK)—a tool to define infrastructure with code—to augment AWS Cloud Formation, a YAML format. They went this way because of all the benefits and abilities you get from a programming language and the languages package ecosystem.</p>
+<p>If a code approach is used, then it's best to provide a way to serialize and deserialize the DSL definition into JSON or YAML for the sake of portability.</p>
+<p>The downside of code is that it requires someone who knows how to code to design using it. They need the programming environment set up on their computer and the understanding of how to use the embedded DSL. Someone might argue that this excludes certain non-technical people from the API design process. In any case, it's important to consider the skills needed for API design in an organization before going this route.</p>
+<h3 id="using-existing-tooling"><a class="header" href="#using-existing-tooling">Using existing tooling</a></h3>
+<p>There are formats like <a href="https://awslabs.github.io/smithy/2.0/index.html">Smithy</a> and <a href="https://github.com/microsoft/cadl">Cadl</a> that people can use to create a tailored DSL. In addition to their own conventions, they also provide ways to extend their functionality. These tools provide features for linting and validating API descriptions and for generating or emitting artifacts based on the API description. Generating formats like OpenAPI that conform to an organization's style guide is one of the main benefits of the language-oriented approach, and tools like these can accelerate a move toward that approach.</p>
+<p>We'll look at Smithy and Cadl more in the Case Studies section.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scenarios-for-using-the-language-oriented-approach"><a class="header" href="#scenarios-for-using-the-language-oriented-approach">Scenarios for using the language-oriented approach</a></h1>
+<p>It's helpful to know when the language-oriented approach can be helpful. There are many different use cases for APIs, which means there are many different approaches to designing and building them. Some approaches will require more formality and rigor, whereas others might be more ad hoc and organic.</p>
+<h2 id="designing-an-api-program"><a class="header" href="#designing-an-api-program">Designing an API program</a></h2>
+<p>Throughout this book, we've discussed ways in which the language-oriented approach can help create a successful API program and put good API practices in place. A tailored DSL can be the foundation for API design across an organization.</p>
+<p>The language-oriented approach is well-suited for this scenario as it helps promote quality and consistency at scale.</p>
+<h2 id="microservices"><a class="header" href="#microservices">Microservices</a></h2>
+<p>As companies move to a microservice architecture, they need ways to ensure that teams are empowered to quickly build services that meet the organization's standards. Likewise, development teams need tools that can accelerate rapid designing, prototyping, and development. Having to learn formats like OpenAPI, style guides on how to write conformant OpenAPI, and tooling to check OpenAPI documents can feel like a hindrance to agility. Thus, it can be hard for teams to see the benefit in adding so much rigor.</p>
+<p>The language-oriented approach can minimize what people have to know to design internal APIs or microservice-oriented APIs. In addition to the design, code generation can accelerate development and ensure that the design and implementation match the organization's style.</p>
+<h2 id="public-apis"><a class="header" href="#public-apis">Public APIs</a></h2>
+<p>Internal APIs can have looser requirements regarding how they change because often the consumers of the API are nearby. People can coordinate changes in ways that they can't with public APIs. Because of this, public APIs must have controls in place to prevent unwanted changes from happening.</p>
+<p>A DSL can provide the guardrails around how people design and evolve a public API. </p>
+<h2 id="backend-for-a-frontend"><a class="header" href="#backend-for-a-frontend">Backend for a frontend</a></h2>
+<p>The browser has become a runtime for many web applications, and teams commonly rely on APIs for server interactions rather than generating HTML on the server. Some teams separate developer roles into frontend and backend for these types of web applications.</p>
+<p>To enable these frontend and backend roles to work in parallel, they need a good API design practice that enables them to design an API upfront and use it as the contract for their feature development. In doing so, frontend and backend developers can work toward the same goal.</p>
+<p>The language-oriented approach can accelerate this work by limiting the design surface area and enabling the teams to focus on the details that matter and generate OpenAPI documents and frontend API clients from the design.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="comparisons-to-design-first-and-code-first"><a class="header" href="#comparisons-to-design-first-and-code-first">Comparisons to design-first and code-first</a></h1>
+<h2 id="how-does-it-compare-to-design-first"><a class="header" href="#how-does-it-compare-to-design-first">How does it compare to design-first?</a></h2>
+<p>The design-first approach is one that encourages teams to consider the API design before writing code to implement the API. The goal is to include more people in the design conversation with the hope of creating a better-quality API design that conforms to the organization's API style guide and standards.</p>
+<p>The language-oriented approach is meant to strengthen the design-first approach by focusing the up-front design process on the conversational language of an organization and by shielding the conversation from repetitive, technical, and protocol-specific details. The language-oriented approach is a design-first approach.</p>
+<p>Using OpenAPI in a design-first approach, the API designers have to think about URLs, HTTP methods, status codes, and JSON Schema. They also have to understand how every detail they put into the OpenAPI document aligns with the organization's OpenAPI style guide and standards. This can raise the barrier to entry for bringing non-technical people into the discussion, which can lead to a less impactful design discussion.</p>
+<p>The language-oriented approach keeps many of those details out of the conversation and relies on tooling to generate OpenAPI documents that include all the details based on the language-oriented API design. By doing so, it enables a higher-quality design-first approach than one that uses OpenAPI as the primary design tool.</p>
+<h2 id="how-does-it-compare-to-code-first"><a class="header" href="#how-does-it-compare-to-code-first">How does it compare to code-first?</a></h2>
+<p>A code-first approach is one with which people generate OpenAPI documents from the code itself. The OpenAPI document isn’t the starting point in a code-first approach. Rather, it’s an artifact of the build process. Developers like the code-first approach because it means that they don’t have to do work twice, which would include writing an OpenAPI document and then putting the same details in the code.</p>
+<p>Following a code-first approach doesn't mean that people don't do any upfront design. However, &quot;code-first&quot; has come to describe scenarios where developers charge forward and start working on the API before considering the use cases and needs of the consumer. It's also meant to describe scenarios in which developers design and build APIs without any involvement from product, UX, marketing, QA, and other non-developer stakeholders.</p>
+<p>There are several approaches to generating OpenAPI documents from code. Using one approach, the API design is adjacent to the code. It resides in the comments, and tooling looks through the comments for the design details.</p>
+<p>Below is an example of how this looks using a tool called <a href="https://github.com/bee-travels/openapi-comment-parser">OpenAPI Comment Parser</a>.</p>
+<pre><code class="language-js">/**
+ * GET /users
+ * @summary Returns a list of users.
+ * @response 200 - A JSON array of user names
+ * @responseContent {string[]} 200.application/json
+ */
+</code></pre>
+<p>The problem here is that the design and implementation can easily get out of sync.</p>
+<p>Another approach is one where the OpenAPI document is derived from the implementation. This is better than keeping the design adjacent to the implementation because it does a better job of ensuring that the design and implementation are in sync.</p>
+<p>Below is an example using <a href="https://fastapi.tiangolo.com/">FastAPI</a>. FastAPI uses Python type hints and a library called <a href="https://pydantic-docs.helpmanual.io/">Pydantic</a> to define types that can be used both for static analysis and input validation in an API.</p>
+<pre><code class="language-python">from typing import Union
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get(&quot;/items/{item_id}&quot;)
+def read_item(item_id: int):
+    return {&quot;item_id&quot;: item_id}
+</code></pre>
+<p>The FastAPI tooling can derive an OpenAPI document from the URLs and type hints. Developers can write code that is descriptive of the API and have human-friendly documentation generated automatically, which makes for a shorter feedback loop and ensures the API design always matches the implementation.</p>
+<p>Both of these approaches bring the design and implementation closer together. The challenge is, though, how does an organization ensure that teams are following a good design process that includes the right stakeholders and considers the consumer's needs?</p>
+<p>The language-oriented approach can allow organizations to use code as the method for authoring API designs. Teams can use this code as part of their implementation to ensure they are in sync. And since the design code and implementation code are separate, tooling can use the design independently of the implementation. Although this takes more development work to create API design tooling, and requires a larger investment for polyglot organizations, it can be an accelerator to following good design principles that result in high-quality APIs.</p>
+<p>The language-oriented approach encourages generating OpenAPI as a build artifact in the same way the code-first approach does. It tries to keep the design and implementation in sync and reduce work so that people design once and reuse the design in their implementation.</p>
+<h2 id="using-the-language-oriented-approach-to-augment-other-approaches"><a class="header" href="#using-the-language-oriented-approach-to-augment-other-approaches">Using the language-oriented approach to augment other approaches</a></h2>
+<p>The language-oriented approach is not in opposition to existing API design approaches like design-first and code-first. Rather, it strengthens other approaches by the method of defining a conversational language that focuses the design process on the non-technical details. The technical details are left for later exploration, either in technical discovery, prototyping, or implementation. Design can happen up front, it can drive the code, and it can be the source of truth for generating OpenAPI documents. This blends the design-first and code-first approaches rather than putting them against each other, and it orients the design process around the right design details.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="case-studies"><a class="header" href="#case-studies">Case Studies</a></h1>
+<h2 id="examples-of-language-oriented-approaches"><a class="header" href="#examples-of-language-oriented-approaches">Examples of language-oriented approaches</a></h2>
+<h3 id="aws-and-smithy"><a class="header" href="#aws-and-smithy">AWS and Smithy</a></h3>
+<p>AWS has their own language for describing services that they called <a href="https://awslabs.github.io/smithy/2.0/index.html">Smithy</a>. In a talk titled <a href="https://youtu.be/3GpZzu4guTE">Scaling APIs with Smithy</a>, Michael Dowling describes the scaling challenge they faced at AWS around API design and SDK generation. They had many public APIs and thousands of internal APIs, and they needed to scale the API design process across the entire organization. They also had to support a long list of programming languages for their CLIs and SDKs. Dowling described the situation they found themselves in when they realized they needed to scale their API program and tooling:</p>
+<blockquote>
+<p>We formed API design patterns and best practices, but knowledge sharing was often ad hoc. We also noticed that not every team followed the same practices and our customers told us this leads to steeper learning curves when moving between services.</p>
+</blockquote>
+<!-- 7 min in video -->
+<p>They created Smithy to address some of these issues. Dowling describes the purpose of frameworks and API programs as to &quot;reduce the number of choices teams need to make in order to succeed.&quot; They worked on Smithy as a way to enable teams across a large organization to build consistent, quality APIs. They were also focused on SDK and code generation, and this approach allowed them to provide better developer experiences with the SDKs and generated code.</p>
+<p>Smithy was AWS' attempt to build their own tailored API design language. They tailored Smithy around their model-first process, CLI and SDK generation, and generating OpenAPI documents. A Smithy document that was 102 lines would produce an OpenAPI document of 176 lines. The reduction in lines wasn't the only win—another victory was the reduced area the API designer had to think about and the errors Smithy prevented them from making.</p>
+<h3 id="microsoft-and-cadl"><a class="header" href="#microsoft-and-cadl">Microsoft and Cadl</a></h3>
+<p>Microsoft defines Cadl as &quot;a language for describing cloud service APIs and generating other API description languages, client and service code, documentation, and other assets.&quot; Brian Terlson, who worked on Cadl, shares some of the reasoning for it and benefits it provides in a <a href="https://mobile.twitter.com/bterlson/status/1572381666286665728">Twitter thread</a>. Terlson states:</p>
+<blockquote>
+<p>Maybe the most exciting aspect of Cadl is how you can encapsulate API patterns and package them into reusable components that you can use across your service, organization or even across ecosystems.</p>
+</blockquote>
+<p>One goal of Cadl is to provide a way for people to design APIs according to the company's standards. Terlson continues:</p>
+<blockquote>
+<p>It's hard to overstate how much this accelerates API dev. You can go beyond linting by creating API components that ensure developers can only create APIs that follow your organization's guidelines, with customized tooling that helps them eliminate any mistakes.</p>
+</blockquote>
+<p>If you start with OpenAPI, you have to also set up linting, but with Cadl, you're able to go beyond linting and provide an approach for developers that prevents them from building the wrong thing.</p>
+<h3 id="stripe-and-their-custom-ruby-dsl"><a class="header" href="#stripe-and-their-custom-ruby-dsl">Stripe and their Custom Ruby DSL</a></h3>
+<p>Stripe has a custom Ruby DSL that allows them to design their APIs and generate OpenAPI documents from it. Richard Marmorstein shares his experience with API design while working at Stripe in his talk <a href="https://youtu.be/mgRreyw-Nlg">Artisanal, machine-generated API libraries</a>. He describes Stripe's API as having 85 resources and 325 methods at the time. Their challenge was updating and releasing new versions of their seven supported SDK libraries whenever they changed their API. They did all this work by hand, but at some point, they decided to generate the SDKs to make them easier to maintain.</p>
+<p>Stripe's API DSL allows them to encode their special cases, especially for field types that OpenAPI doesn't support. Stripe can describe their special types in their DSL and generate the more verbose and less descriptive OpenAPI document that corresponds to it. They can also build their SDK code around this DSL so that they don't have to decode their special cases from a more complex OpenAPI document.</p>
+<h3 id="crunchy-data-and-their-custom-go-dsl"><a class="header" href="#crunchy-data-and-their-custom-go-dsl">Crunchy Data and their Custom GO DSL</a></h3>
+<p><a href="https://brandur.org">Brandur Leach</a> writes about his journey toward a language-oriented approach in his <a href="https://brandur.org/nanoglyphs/031-api-docs">newsletter article about API documentation</a>. His journey took him from Heroku, to Stripe, to Crunchy Data. Leach describes his work on APIs at Heroku, where they used <a href="https://json-schema.org/draft/2019-09/json-schema-hypermedia.html">JSON Hyper-Schema</a>, a general-purpose format similar to OpenAPI, to describe their API:</p>
+<blockquote>
+<p>Because the schemas lived out-of-band of the API implementation, we needed a way to show that they were right, and continued to be right even as the implementation potentially diverged.</p>
+</blockquote>
+<p>Leach built a tool called <a href="https://github.com/interagent/committee">Committee</a> to help ensure that the design in JSON Hyper-Schema matched the implementation. Leach shares what he sees as the downside to this approach, though:</p>
+<blockquote>
+<p>Manually writing Hyper-Schema was time consuming and awful. [...] Furthermore, the whole process was just pretty manual overall. Even once the schema was written, it had to be maintained in step with API development, with changes manually pushed to <a href="https://github.com/interagent/prmd">Prmd</a> and then published through Devcenter.</p>
+</blockquote>
+<p>Later at Stripe, Leach worked with Stripe's custom API tooling and tailored DSL. He left there to work at Crunchy Data. He describes the situation there before they created their DSL.</p>
+<blockquote>
+<p>The loop was: hopefully a product person would remember that a new API feature was shipping, and would poke a dev rel person to update the docs. The dev rel person would write some documentation about a feature they understood by way of two hops worth of telephone, hit some endpoints with cURL, and try to capture what came back as best as they could.</p>
+<p>The results were about what you’d expect. The docs were enough to get something working, but only about half our total API endpoints were documented. Amongst those that were, fields were often missing or extraneous as the responses had changed since the docs were originally written. Some of it was just flat out wrong.</p>
+</blockquote>
+<p>This is an example of a disjointed API development lifecycle where none of the steps seem to go together. Leach worked on a DSL in Go to address these issues. With this tool, Crunchy Data was able to design their APIs, build correct documentation from the design, and use the design at runtime. Leach sums up their work:</p>
+<blockquote>
+<p>[On] a successful merge to master, CI pushes a new OpenAPI to the web. A separate GitHub Action wakes up, runs the doc generator and commits any changes. That commit triggers a Heroku deployment and pushes the changes live. Aside from the initial merge on GitHub, no human intervention is required at any point.</p>
+</blockquote>
+<p>This is a good example of using a DSL to create a cohesive API development lifecycle, where everything is connected, from the design to development to documentation.</p>
+<h2 id="flow-and-their-approach-to-microservice-architecture"><a class="header" href="#flow-and-their-approach-to-microservice-architecture">Flow and their approach to microservice architecture</a></h2>
+<p>Michael Bryzek at <a href="https://www.flow.io">Flow</a>, which is now part of <a href="https://www.global-e.com/">Global-e</a>, talked about their approach to microservices in his talk <a href="https://youtu.be/j6ow-UemzBc">Design Microservice Architectures the Right Way</a>. In his approach, he created a design and development process that used a tailored DSL as a way to ensure all microservices followed the same styles, standards, and patterns for their APIs. Flow's design process started with the DSL, and from there, they generated OpenAPI documents, server code, and even database schemas. The API design language captured in the DSL drove the entire development process.</p>
+<p>Bryzek was looking for several benefits when crafting Flow's approach to microservices. Bryzek said good architecture:</p>
+<ul>
+<li>Scales development teams</li>
+<li>Delivers quality</li>
+<li>Enables high performance and low cost</li>
+<li>Supports future features naturally</li>
+</ul>
+<p>These are also goals of a language-oriented approach.</p>
+<p>One example that shows the power of this approach is where Bryzek shows how they added support in their DSL for tracking personally identifiable information. They could then use this information throughout their entire architecture. Below is a snippet of what their DSL looked like and how they use <code>personal_data</code> to signify personally identifiable information. The example has been condensed for the sake of brevity.</p>
+<pre><code class="language-json">{
+  &quot;user&quot;: {
+    &quot;fields&quot;: [
+      {
+        &quot;name&quot;: &quot;email&quot;,
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;required&quot;: false,
+        &quot;annotations&quot;: [&quot;personal_data&quot;]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>This DSL shows how they were able to go beyond what OpenAPI provides. The DSL becomes the source of truth for their entire development workflow, influencing client and server code generation, database migrations, and as we see here, privacy policies.</p>
+<h3 id="square-and-their-custom-dsl"><a class="header" href="#square-and-their-custom-dsl">Square and their Custom DSL</a></h3>
+<p>In the blog post &quot;<a href="https://developer.squareup.com/blog/making-openapi-swagger-bearable-with-your-own-dsl/">Making OpenAPI / Swagger Bearable With Your Own DSL</a>,&quot; Sebastien Armand describes the approach he took to make it easier to deal with the complexity of OpenAPI. He defines the problem:</p>
+<blockquote>
+<p>While OpenAPI is great for describing APIs, generating client SDK code and defining API contracts, it's definitely not a great experience to write OpenAPI documents from scratch.</p>
+</blockquote>
+<p>He said that for them, an OpenAPI document describing just 10 endpoints could end up being over 1,000 lines long. This makes it challenging to maintain and read.</p>
+<p>Armand decided to create their own DSL to write OpenAPI. He shows an example in his blog post where he designs an entire API in 61 lines of his DSL and generates 550 lines of OpenAPI in YAML—nearly an order of magnitude larger than the DSL. Armand did not release the code for their DSL, though, stating:</p>
+<blockquote>
+<p>I encourage you and your team to do the same if you write Swagger / OpenAPI documents. However, it's likely your response format or your error format is specific to your API and won't fit what we've done ourselves by customizing this DSL to our service. That's why I encourage you to write your own DSL if you want to get the real benefits from this approach.</p>
+</blockquote>
+<p>His suggestion is to make a DSL because everyone's needs and patterns are different.</p>
+<h3 id="alps-and-the-unified-api-design-method"><a class="header" href="#alps-and-the-unified-api-design-method">ALPS and the Unified API Design Method</a></h3>
+<p><a href="http://alps.io/">ALPS</a>, which stands for Application Level Profile Semantics, is a format for describing the semantics of an application separate from the technical and implementation details of the application. When used for API design, ALPS acts as an interface design language, enabling people to focus on the interface's properties and actions and leave out the HTTP details. The goal is to improve the design process and make the application-level semantics reusable across many different types of implementations.</p>
+<p>Mike Amundsen, one of the authors of the <a href="https://datatracker.ietf.org/doc/html/draft-amundsen-richardson-foster-alps-04">ALPS specification</a>, has a <a href="https://github.com/mamund/alps-unified">project</a> that uses ALPS as a Unified API Design Document, which is a document that is agnostic of the protocol and implementation and can be converted into many other formats like OpenAPI, AsyncAPI, and Proto3 among others.</p>
+<p>In his talk titled <a href="https://github.com/mamund/2020-04-unified-api-design">GraphQL, gRPC and REST, Oh My!</a>, Amundsen tells an API design and governance story where an organization chooses OpenAPI as the backbone of their API design practice. After investing time and money in people, processes, and tools, the organization realizes that they want to support technologies other than OpenAPI, like gRPC or GraphQL. Amundsen asks, what should the organization do? Start over? Invest in more people, processes, and tools for these other formats? Amundsen proposes instead of using OpenAPI as the backbone of an API design practice, organizations should seek a unified design solution. Amundsen shows in his ALPS Unified project how this would be possible.</p>
+<p>Although ALPS is not a DSL tailored to a specific organization's conversational API design language, it is minimal enough that an organization could layer on a light set of governance rules and get much closer to a language-oriented approach than they could using OpenAPI directly. Organizations could also create a DSL that they map into ALPS and then into other formats like OpenAPI and AsyncAPI. The ALPS Unified project is a great example of how this is possible.</p>
+<h2 id="what-we-see-with-these-examples"><a class="header" href="#what-we-see-with-these-examples">What we see with these examples</a></h2>
+<p>These examples show organizations and projects that were searching for ways to deal with the challenges of creating an API program at scale. Ultimately, these organizations and projects saw how a format like OpenAPI is not enough for building consistent APIs and maintaining tooling such as documentation or SDKs. They found it was worth the investment in their own DSL because they saw the costs of using a general-purpose format that showed up over time. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="concluding-thoughts"><a class="header" href="#concluding-thoughts">Concluding Thoughts</a></h1>
+<p>The language-oriented approach seeks to address the cascade of challenges organizations face when trying to create an API program that follows a design-first approach. It tries to make organizational language the primary tool for designing APIs. Moreover, it encourages organizations to create small tools to accomplish their design goals.</p>
+<p>We need a shift like this in our industry. It's too complicated for organizations to implement and maintain a good API program. We've been down this same path with API design tooling for many years now with the hopes of improving the process of designing and building APIs. We've yet to reach this goal, leaving us with a complex and fragmented API industry that creates more questions than answers. </p>
+<p>The path forward needs to be about creating languages that suit business needs, an idea borrowed directly from <a href="https://en.wikipedia.org/wiki/Language-oriented_programming">Language-Oriented Programming</a> (LOP). LOP, as Wikipedia defines it, is:</p>
+<blockquote>
+<p>[...] a software-development paradigm where &quot;language&quot; is a software building block with the same status as objects, modules and components, and rather than solving problems in general-purpose programming languages, the programmer creates one or more domain-specific languages (DSLs) for the problem first, and solves the problem in those languages.&quot;</p>
+</blockquote>
+<p>We see the same goal in the <a href="https://www.w3.org/standards/semanticweb/">Semantic Web</a> as its goal is to &quot;enable people to create data stores on the Web, build vocabularies, and write rules for handling data.&quot; In the Semantic Web, we overlay language onto existing formats and technologies. We also see the same goal with Eric Evan's work on Domain-Driven Design, which <a href="https://martinfowler.com/bliki/DomainDrivenDesign.html">Martin Fowler says of it</a>, &quot;At the heart of [Domain-Driven Design] was the idea that to develop software for a complex domain, we need to build Ubiquitous Language that embeds domain terminology into the software systems that we build.&quot;</p>
+<p>These other approaches share this common thesis: people get the most benefit in their software practices when they align their code and architecture as closely as possible to the language of the problem domain. The language-oriented approach is about following this path of making language the center of interaction. Language is all we have when we design APIs, and by not making our process language-oriented, we bury the details and limit the ability of API designers to the subset of knowledge they have about existing general-purpose standards and tools. The language-oriented approach constrains the language to that of the organization—not to limit the API designer, but to accelerate the API design process and foster conversation that aligns with the organizational language.</p>
+<p>Lastly, the goal of this short book is not only to formalize a new idea, but to trigger new ideas in others. If someone else takes the ideas from the language-oriented approach and builds upon them, or if the language-oriented approach influences modern standards and tooling in a way that makes them more language-oriented, this work will be considered a success.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="glossary"><a class="header" href="#glossary">Glossary</a></h1>
+<p><strong>AGM</strong>: See API Governance Model</p>
+<p><strong>API Design</strong>: The act of designing the specific details of how an API will work, including the technologies, standards, and vocabulary used in the API.</p>
+<p><strong>API Development Lifecycle</strong>: The process for API development that includes designing, implementing, testing, building, deploying, and monitoring APIs.</p>
+<p><strong>API Program</strong>: An initiative at an organization that tries to define how the organization will collective build and maintain APIs.</p>
+<p><strong>API Governance Model (AGM)</strong>: A model defined by an organization that defines how it will apply governance to their APIs based on their agreed-upon styles and standards.</p>
+<p><strong>Backend for a Frontend (BFF)</strong>: Commonly refers to an API that provides the backend for a specific UI. Organizations that use BFFs may have different APIs for their web, mobile, and desktop applications.</p>
+<p><strong>Code-First</strong>: An approach to API development that generates the API design reference from the implementation. This commonly stands in contrast to Design-First.</p>
+<p><strong>Code Generation</strong>: In the context of API development, code generation refers to the process of generating client and server code from API designs.</p>
+<p><strong>Conversational Language</strong>: The language—including terms, concepts, standards, principles, and practices—an organization uses to design and develop APIs.</p>
+<p><strong>Design-First</strong>: An approach to API development that encourages people to consider the design of the API before working its implementation. This commonly stands in contrast to Code-First.</p>
+<p><strong>Domain-Specific Language (DSL)</strong>: A language that is used for describing a specific domain. This stands in contrast to general-purpose programming languages.</p>
+<p><strong>General-Purpose Format</strong>: An API design format meant for a broader use and for many different kinds of API designs. OpenAPI is an example of a general-purpose format.</p>
+<p><strong>Format-Oriented Approach</strong>: An approach to API development that orients the API development lifecycle around general-purpose formats and uses tooling to ensure the API design matches the organization's Conversational Language. This stands in contrast to the Language-Oriented Approach.</p>
+<p><strong>Language-Oriented Approach</strong>: An approach to API development that orients the API development lifecycle around the language the organization uses to design APIs. This stands in contrast to the Format-Oriented Approach.</p>
+<p><strong>Microservice Architecture</strong>: An approach to building systems that encourages organizations to build small, single-purpose, self-contained services rather than monolithic applications.</p>
+<p><strong>OpenAPI</strong>: A general-purpose API description language for describing APIs.</p>
+<p><strong>Tailored DSL</strong>: A DSL tailored to the needs and Conversational Language of an organization.</p>
+<p><strong>Tooling</strong>: Software, either built or purchased.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="about-the-author"><a class="header" href="#about-the-author">About the author</a></h1>
+<p>Stephen Mizell has worked in the API industry since 2014, starting with Apiary, a company building API design and collaboration tools. There he worked on their API description language called API Blueprint, API developer tools, and enterprise products and tooling. He worked at Autodesk as an API software developer where he helped build APIs and define the API standards for his area and eventually the entire company. He worked at SmartBear as a Director of Product Management for SwaggerHub for their API design tools, managing features and tools around the API development workflow.</p>
+<p>He has worked as a consultant for API tooling companies, helping them with their API products from both a product and a technical perspective, and has worked with companies to design and build better APIs.</p>
+<p>You can find Stephen at <a href="https://smizell.com">smizell.com</a> or follow him on Twitter at <a href="https://twitter.com/Stephen_Mizell">@Stephen_Mizell</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>
