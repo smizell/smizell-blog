@@ -7,17 +7,18 @@
 
   <div class="hero-about">
     Hi, I'm Stephen Mizell, a technologist and writer specializing in APIs.
-    You can 
+    You can
     read <a href="/about">about me</a>,
     check out some of <a href="/projects/">my projects</a>,
+    dive into <a href="/books">my books</a>,
     read <a href="/tags/">things I write</a>,
-    keep up with <a href="/categories/weeknotes/">weeknotes</a>,
+    <!--keep up with <a href="/categories/weeknotes/">weeknotes</a>,-->
     or <a href="/contact/">get in touch</a>.
   </div>
 
   <div class="books">
     <h2>Latest book</h2>
-    <!--<div class="book">
+    <div class="book">
       <div><img class="book__cover" src="{{ "images/language-oriented/cover-small.svg" | absURL }}" alt="Book cover" width="100" /></div>
       <div>
         <span class="book__heading">The Language-Oriented Approach to API Development</span>
@@ -26,10 +27,10 @@
           Instead of governing the way people in an organization use OpenAPI,
           the language-oriented approach encourages organizations to create DSLs tailored to the way they design APIs.
         </p>
-        <p><a href="/books/language-oriented">Buy now</a></p>
+        <p><a href="/language-oriented-approach">Read now</a></p>
       </div>
-    </div>-->
-    <div class="book">
+    </div>
+    <!--<div class="book">
       <div><img class="book__cover" src="/images/api-by-design/cover-small.svg" alt="Book cover" width="100" /></div>
       <div>
         <span class="book__heading">API by Design</span>
@@ -41,7 +42,7 @@
         </p>
         <p><a href="/books/api-by-design/">Buy now</a></p>
       </div>
-    </div>
+    </div>-->
     <p class="book--more"><a href="/books/">See all books</a></p>
   </div>
 
@@ -69,7 +70,7 @@
     {{ $w := where .Site.RegularPages "Section" "posts" }}
     {{ $w := first 5 (where $w ".Params.categories" "intersect" (slice "weeknotes")) }}
 
-    <h3>Weeknotes <span class="subtle">(last 5)</span></h3>
+    <!--<h3>Weeknotes <span class="subtle">(last 5)</span></h3>
 
     <div class="post-list">
       {{ range $w }}
@@ -80,6 +81,6 @@
           <span><a href="{{ .Permalink }}">{{ .Title | markdownify }} of {{ .Date.Format "2006" }}</a></span>
         </div>
       {{ end }}
-    </div>
+    </div>-->
   </div>
 {{ end }}

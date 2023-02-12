@@ -4,7 +4,7 @@ type: page
 ---
 
  <div class="books books__main">
-  <!--<div class="book">
+  <div class="book">
     <div><img class="book__cover" src="/images/language-oriented/cover-small.svg" alt="Book cover" width="100" /></div>
     <div>
       <span class="book__heading">The Language-Oriented Approach to API Development</span>
@@ -13,9 +13,9 @@ type: page
         Instead of governing the way people in an organization use OpenAPI,
         the language-oriented approach encourages organizations to create DSLs tailored to the way they design APIs.
       </p>
-      <p><a href="/books/language-oriented">Buy now</a></p>
+      <p><a href="/language-oriented-approach">Read now</a></p>
     </div>
-  </div>-->
+  </div>
   <div class="book">
     <div><img class="book__cover" src="/images/api-by-design/cover-small.svg" alt="Book cover" width="100" /></div>
     <div>
