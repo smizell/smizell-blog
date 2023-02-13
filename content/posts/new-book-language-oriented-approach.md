@@ -5,7 +5,6 @@ cover: ""
 tags: []
 description: ""
 showFullContent: false
-draft: true
 ---
 
 My latest book is called *The Language-Oriented Approach to API Development*, and you can [read it online for free now](/language-oriented-approach). It's about a different way to think about the API development lifecycle. In this approach, people create their own language for the way they talk about APIs and capture that language in a DSL. This stands in contrast to authoring API designs in OpenAPI and using linting tools to ensure the design meets the API standards for an organization or team.
