@@ -51,7 +51,7 @@ Just this morning [I saw another tool](https://www.builder.io/blog/module-extrac
 </button>
 ```
 
-Notice the `server$` function. When you compile this code and click the button in a browser, the `console.log` will run on the server. Check out the video in [this tweet](https://twitter.com/manucorporat/status/1628758078572175360).
+Notice the `server$` function. When you compile this code and click the button in a browser, the `console.log` will run on the server. There's no API to build. Check out the video in [this tweet](https://twitter.com/manucorporat/status/1628758078572175360).
 
 [Manu Mtz.-Almeida](https://twitter.com/manucorporat), author of Quik, writes about [this approach](https://www.builder.io/blog/module-extraction-the-silent-web-revolution):
 
