@@ -57,6 +57,8 @@ Notice the `server$` function. When you compile this code and click the button i
 
 > Who said you need to choose between edge or serverless? What if you could write a single component file and leverage the entire cloud infrastructure or even web workers?
 
+We spent many years trying to keep HTML and CSS separate in the browser wars, only to merge them back together in React and JSX. Now we're merging worlds across the network.
+
 This approach cuts down on what developers have to think about. Normally, developers put their client code over here and their server code over there. Then they have to make the client and server talk. With Quik, Electric, and Blitz, client and server code are all mingling together in a single section of code. And all the details about making clients and servers communicate over the network is handled by the tooling, not a developer trying to figure out whether to use PUT or PATCH.
 
 There are many other examples of this pattern. Check out how Racket does continuations:
