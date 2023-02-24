@@ -38,7 +38,7 @@ paginate = 10
 
 [markup]
   [markup.highlight]
-    style = 'manni'
+    style = 'friendly'
 
   [markup.goldmark.renderer]
     unsafe = true
