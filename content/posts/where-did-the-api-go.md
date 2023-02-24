@@ -75,7 +75,7 @@ There are many other examples of this pattern. Check out how Racket does continu
         "Click me")))))
 ```
 
-The link includes a function as the `href` that runs Racket code when clicked. Wild.
+The link includes an `embed/url` function as the `href` that runs Racket code when clicked. It's running on the server, not in the browser, but it gives the appearance that Racket code is mixed in with the HTML. Wild.
 
 In some cases, these broader ideas of getting rid of the network aren't new. Someone created the Wikipedia article for RPC in over 20 years ago. As someone who loves HTTP, REST, and even using HTML within APIs, I'm still fascinated and interested in the ways people are trying to make it easier to think about and build web applications and move beyond all those details. It comes down the deep feeling of, "Why do we have to think about all this stuff? Could we not?"
 
