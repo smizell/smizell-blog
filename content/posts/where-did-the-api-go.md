@@ -5,6 +5,8 @@ cover: ""
 tags: []
 description: ""
 showFullContent: false
+features:
+- meta-load
 ---
 
 It's always interested me how GraphQL does all it does without making you think about the HTTP details. You get to focus in on your data and behavior and forget about all the standards and best practices around URLs, HTTP methods, and status codes. Frontend GraphQL tooling takes it further, allowing you to think about data and behavior at the component level rather than API level—the tooling figures out how to optimize the queries to the server across all the components.
