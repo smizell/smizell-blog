@@ -69,6 +69,10 @@
   background-color: #fff;
 }
 
+.book--meta {
+  padding: 10px;
+}
+
 .feature {
   margin-top: 70px;
   padding-top: 15px;
