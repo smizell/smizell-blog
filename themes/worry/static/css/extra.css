@@ -69,6 +69,12 @@
   background-color: #fff;
 }
 
+.feature {
+  margin-top: 70px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
 @media (min-width: 690px) {
   .book {
     padding: 15px 20px 5px;
