@@ -1,10 +1,10 @@
-require 'fileutils'
+require "fileutils"
 require "yaml"
 
 EDITOR_CMD = "open -a \"/Applications/iA Writer.app\""
 SCHEDULE_FILE = "schedule.txt"
 
-task :default => [:commit_content]
+task default: [:commit_content]
 
 desc "Commit files in the content directory"
 task :commit_content do
@@ -19,7 +19,18 @@ task deploy: :commit_content do
 end
 
 desc "Publish, same as deploy"
-task :push => :deploy
+task push: :deploy
+
+namespace :load do
+  task :serve do
+    `mdbook serve language-oriented-approach --open`
+  end
+
+  task :build do
+    `rm -rf static/language-oriented-approach`
+    `mdbook build language-oriented-approach -d ./static/language-oriented-approach`
+  end
+end
 
 namespace :posts do
   desc "Create a new post and open editor"
@@ -58,9 +69,9 @@ namespace :schedule do
     file_name = File.join("content", top)
     text = File.read file_name
     _, frontmatter_yaml, body = text.split("---").map(&:strip)
-    frontmatter = YAML.load frontmatter_yaml
+    frontmatter = YAML.safe_load frontmatter_yaml
     frontmatter.delete "draft" if frontmatter.key? "draft"
-    frontmatter["date"] = Time.now.strftime('%FT%T%:z')
+    frontmatter["date"] = Time.now.strftime("%FT%T%:z")
     new_text = <<~TXT
       #{YAML.dump(frontmatter).strip}
       ---
@@ -118,7 +129,7 @@ class Content
   end
 
   def create!
-    FileUtils.mkdir_p content_path unless Dir.exists? directory
+    FileUtils.mkdir_p content_path unless Dir.exist? directory
     `hugo new #{content_path} -k #{@kind}`
   end
 
@@ -127,7 +138,7 @@ class Content
   end
 
   def exists?
-    File.exists? content_path
+    File.exist? content_path
   end
 
   def content_path
