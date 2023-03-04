@@ -23,6 +23,8 @@ This pattern isn't new, which many people on the internet were quick to point. "
 
 What's interesting to me is how Service Weaver comes with a lot of important tooling for building microservices. Logging, metrics,  tracing, profiling, routing, versioning—these are all headings in their documentation and a key piece to building applications with Service Weaver.
 
+The documentation doesn't say much about error handling beyond this section:
+
 > Method calls are executed with at-most-once semantics. This means that Service Weaver does not automatically retry method calls that fail. However, you can detect and retry failed method calls explicitly using `weaver.ErrRetriable`.
 
 The code to retry looks like this ([copied from the docs](https://serviceweaver.dev/docs.html#components-semantics)):
