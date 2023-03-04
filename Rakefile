@@ -9,8 +9,8 @@ task default: [:commit_content]
 desc "Commit files in the content directory"
 task :commit_content do
   `git checkout main`
-  `git add content/ static/ config.toml schedule.txt`
-  `git commit -S -m "Add content #{Time.now}"`
+  `git add language-oriented-approach/ content/ static/ config.toml schedule.txt`
+  `git commit -S -m "Updated #{Time.now}"`
 end
 
 desc "Deploy site"
@@ -18,8 +18,11 @@ task deploy: :commit_content do
   `git push origin main`
 end
 
-desc "Publish, same as deploy"
+desc "Push, same as deploy"
 task push: :deploy
+
+desc "Publish, same as deploy"
+task publish: :deploy
 
 namespace :load do
   task :serve do
