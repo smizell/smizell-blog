@@ -28,7 +28,7 @@ namespace :load do
 
   task :build do
     `rm -rf static/language-oriented-approach`
-    `mdbook build language-oriented-approach -d ./static/language-oriented-approach`
+    `mdbook build language-oriented-approach -d ../static/language-oriented-approach`
   end
 end
 
