@@ -45,7 +45,7 @@ So the network doesn't *completely* disappear—you still have to consider netwo
 
 I have similar questions as I had with the frontend trend. What happens when someone wants to call one of the microservices? Is the modular monolith the main interface to the application? Or can other teams write their own code in the language of their choice that integrates with the Service Weaver microservices? Does Service Weaver neglect one of the key benefits of microservices: providing a clear boundary of cross-team ownership?
 
-Lastly, I found this piece of information intriguing. It was [a reply tweet from Kelsey Hightower](https://twitter.com/kelseyhightower/status/1631665871109365762) when asked if this is used internally at Google:
+Lastly, I found this piece of information intriguing. It was [a reply tweet from Kelsey Hightower](https://twitter.com/kelseyhightower/status/1631665871109365762) when asked if Google uses Service Weaver internally:
 
 > We do not use this internally at Google. Unlike gRPC, Service Weaver is a new project from the ground up like Go and Kubernetes were.
 
